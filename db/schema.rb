@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128190416) do
+ActiveRecord::Schema.define(version: 20160130100528) do
 
   create_table "lines", force: :cascade do |t|
     t.string   "title",      limit: 255
-    t.integer  "capacity",   limit: 4
+    t.integer  "capacity",   limit: 4,   default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.integer  "line_id",    limit: 4
+    t.string   "name",       limit: 255
+    t.boolean  "enabled",    limit: 1
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "sections", ["line_id"], name: "index_sections_on_line_id", using: :btree
 
 end
