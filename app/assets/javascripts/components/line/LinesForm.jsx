@@ -7,7 +7,12 @@ LinesForm = React.createClass({
 		});
 	},
 	componentDidMount: function(){
-		// this.serverRequest = jQuery.get('/lines/' + this.props.data.id + '/get_sections', this.handleSections);
+	    if (this.isMounted()) {
+			this.req = jQuery.get('/lines/' + this.props.data.id + '/get_sections', this.handleSections);
+		}
+	},
+	componentWillUnmount: function () {
+		this.req.abort();
 	},
 	handleSections: function(result){
 		this.setState({ sections: result });
