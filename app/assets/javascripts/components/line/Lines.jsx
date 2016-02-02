@@ -28,8 +28,7 @@ Lines = React.createClass({
 					</div>
 				</div>
 				<LinesForm key={this.state.records[this.state.current_record_index].id} 
-					data={this.state.records[this.state.current_record_index]}
-					url=('/lines/' + this.state.records[this.state.current_record_index].id + '/get_sections') />
+					data={this.state.records[this.state.current_record_index]} />
 			</div>
 		);
 	}

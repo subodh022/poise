@@ -1,27 +1,17 @@
 LinesForm = React.createClass({
 	getInitialState: function(){
-		// sections = jQuery.ajax({
-		// 	method: 'get',
-		// 	url: '/lines/' + this.props.data.id + '/get_sections',
-		// 	success: function(data){
-		// 		return data;
-		// 	}
-		// });
 		return ({
 			title: this.props.data.title,
     		capacity: this.props.data.capacity,
-    		sections: this.props.sections
+    		sections: []
 		});
 	},
-	// getSections: function(){
-	// 	jQuery.ajax({
-	// 		method: 'get',
-	// 		url: '/lines/' + '1' + '/get_sections',
-	// 		success: function(data){
-	// 			return data;
-	// 		}
-	// 	});
-	// },
+	componentDidMount: function(){
+		// this.serverRequest = jQuery.get('/lines/' + this.props.data.id + '/get_sections', this.handleSections);
+	},
+	handleSections: function(result){
+		this.setState({ sections: result });
+	},
 	handleSubmit: function(e){
 	    e.preventDefault();
 	    jQuery.ajax({
