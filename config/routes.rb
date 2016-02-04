@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :sections
+  resources :sections do
+    member do
+      put 'enable'
+    end
+  end
   resources :lines do
     member do
       get 'get_sections'

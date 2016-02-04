@@ -21,10 +21,10 @@ LinesForm = React.createClass({
 	    e.preventDefault();
 	    jQuery.ajax({
 			method: 'put',
-			url: '/lines/' + this.props.key, 
+			url: '/lines/' + this.props.data.id, 
 			data: jQuery("#line").serialize(),
 			success: function(message){
-				alert("updated");
+				alert(message);
 			}
 		});
 	},
@@ -34,14 +34,14 @@ LinesForm = React.createClass({
 				<div className="row">
 					<label className="col-xs-2">Line Name</label>
 					<div className="col-xs-3">
-						<input type="text" className='form-control' placeholder='Title' name='title' defaultValue={this.state.title} />
+						<input type="text" className='form-control' placeholder='Title' name='line[title]' defaultValue={this.state.title} />
 					</div>
 				</div>
 				<div className="clear" />
 				<div className="row">
 					<label className="col-xs-2">Line Capacity</label>
 					<div className="col-xs-3">
-						<input type="text" className='form-control' placeholder='Capacity' name='capacity' defaultValue={this.state.capacity} />
+						<input type="text" className='form-control' placeholder='Capacity' name='line[capacity]' defaultValue={this.state.capacity} />
 					</div>
 				</div>
 				<div className="clear" />
