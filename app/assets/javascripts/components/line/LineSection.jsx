@@ -30,7 +30,7 @@ LineSection = React.createClass({
 				<label className="col-xs-2"/>
 				<div className="col-xs-3">
 					<input className="col-xs-2" type="checkbox" id={"section-" + this.props.data.id} 
-						checked={this.state.enable} onChange={this.handleChange.bind(this)} />
+						checked={this.state.enable} onChange={this.handleChange} />
 					<label>{this.props.data.name}</label>
 				</div>				
 			</div>
