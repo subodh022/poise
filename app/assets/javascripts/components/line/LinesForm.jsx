@@ -24,7 +24,10 @@ LinesForm = React.createClass({
 			url: '/lines/' + this.props.data.id, 
 			data: jQuery("#line").serialize(),
 			success: function(message){
-				alert(message);
+				console.log(message);
+			},
+			error: function(error){
+				alert("Something went wrong.");
 			}
 		});
 	},

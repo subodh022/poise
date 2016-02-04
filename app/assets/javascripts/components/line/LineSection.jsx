@@ -5,16 +5,14 @@ LineSection = React.createClass({
 		});
 	},
 	handleChange: function(e){
-
-	    this.setState({enable: true});
-	    e.preventDefault();
 	    enabled = jQuery("#section-" + this.props.data.id).prop("checked");
+	    this.setState({enable: enabled});
 	    jQuery.ajax({
 			method: 'put',
 			url: '/sections/' + this.props.data.id + '/enable?enabled=' + enabled , 
 			data: jQuery("#line").serialize(),
 			success: function(result){
-				alert(result);
+				console.log(result);
 			},
 			error: function(error){
 				alert("Something went wrong.");
