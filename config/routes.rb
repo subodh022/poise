@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :operators
+  resources :operations
   resources :sections do
     member do
       put 'enable'

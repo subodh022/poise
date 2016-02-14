@@ -1,0 +1,8 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "rangeslider.js": "https://github.com/andreruffert/rangeslider.js.git",
+    "material-ui": "https://github.com/callemall/material-ui.git",
+    "react-bootstrap": "https://github.com/react-bootstrap/react-bootstrap.git"
+  }
+}

@@ -22,7 +22,7 @@ LinesForm = React.createClass({
 	    jQuery.ajax({
 			method: 'put',
 			url: '/lines/' + this.props.data.id, 
-			data: jQuery("#line").serialize(),
+			data: jQuery("#line-form").serialize(),
 			success: function(message){
 				console.log(message);
 			},
@@ -33,7 +33,7 @@ LinesForm = React.createClass({
 	},
 	render: function(){
 		return (
-			<form className="form-inline" onSubmit={this.handleSubmit} id="line">
+			<form className="form-inline" onSubmit={this.handleSubmit} id="line-form">
 				<div className="row">
 					<label className="col-xs-2">Line Name</label>
 					<div className="col-xs-3">
@@ -47,6 +47,7 @@ LinesForm = React.createClass({
 						<input type="text" className='form-control' placeholder='Capacity' name='line[capacity]' defaultValue={this.state.capacity} />
 					</div>
 				</div>
+				<label className="col-xs-1">Sections</label>
 				<div className="clear" />
 				{this.state.sections.map(function(section, i){
 	      			return <LineSection data={section} key={section.id} />;

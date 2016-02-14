@@ -1,7 +1,7 @@
 class LinesController < ApplicationController
 
 	def index
-		@records = Line.includes(:sections).limit(4)
+		@records = Line.all
 	end
 
 	def update

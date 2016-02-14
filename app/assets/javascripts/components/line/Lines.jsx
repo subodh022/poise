@@ -27,6 +27,7 @@ Lines = React.createClass({
 						/>
 					</div>
 				</div>
+				<hr/>
 				<LinesForm key={this.state.records[this.state.current_record_index].id} 
 					data={this.state.records[this.state.current_record_index]} />
 			</div>

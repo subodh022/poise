@@ -1,0 +1,14 @@
+{
+  "name": "react-bootstrap",
+  "homepage": "https://github.com/react-bootstrap/react-bootstrap",
+  "version": "0.28.3",
+  "_release": "0.28.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.28.3",
+    "commit": "83ede00d472ddda1779d5d8c38f5e39261ba3489"
+  },
+  "_source": "https://github.com/react-bootstrap/react-bootstrap.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/react-bootstrap/react-bootstrap.git"
+}

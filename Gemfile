@@ -35,6 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'react-rails', '~> 1.0'
 gem 'bootstrap-sass', '~> 3.3.4'
 
+gem "bower-rails", "~> 0.10.0"
+
 gem 'puma'
 
 group :development, :test do
