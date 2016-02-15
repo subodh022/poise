@@ -24,17 +24,20 @@ OperationForm = React.createClass({
   render: function() {
     return (
       <form className="form-inline" onSubmit={this.handleSubmit} id="op-form">
-        <h5 className="text-info">Add New Operation</h5>
+        <h5 className="text-info"><b>Add New Operation</b></h5>
         <div className="row">
           <div className="form-group rm10">
+            <h6>Operation Title</h6>
             <input type="text" className="form-control" placeholder="Enter Operation Title" 
                 name="title" value={this.state.title} defaultValue={this.state.title} onChange={this.handleChange} />
           </div>
           <div className="form-group rm10">
+            <h6>SMV Value</h6>
             <input type="text" className="form-control" placeholder="Enter SMV Value" 
                 name="smv" value={this.state.smv} defaultValue={this.state.smv} onChange={this.handleChange} />
           </div>
           <div className="form-group">
+            <h6><b>&nbsp;</b></h6>
             <button type="submit" className="btn btn-primary" disabled={!this.valid()}>Add Operation</button>
           </div>
         </div>

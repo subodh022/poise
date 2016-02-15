@@ -4,7 +4,7 @@ Operators = React.createClass({
       return { value: a.id, label: a.title };
     });
     return {
-      records: this.props.data,
+      records: JSON.parse(this.props.data),
       options: options
     };
   },
@@ -47,13 +47,14 @@ Operators = React.createClass({
     return (
       <div>
         <OperatorForm lines={this.state.options} handleNewRecord={this.addRecord} />
-        <hr/><h5 className="text-info">Operators List</h5>
+        <hr/><h5 className="text-info"><b>Operators List</b></h5>
         <table className="table table-bordered">
           <thead>
             <tr>
               <th>Operator Name</th>
               <th>Employee ID</th>
               <th>Line</th>
+              <th>Section</th>
               <th>Actions</th>
             </tr>
           </thead>

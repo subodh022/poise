@@ -28,28 +28,40 @@ OperatorForm = React.createClass({
   render: function() {
     return (
       <form className="form-inline" onSubmit={this.handleSubmit} id="op-form">
-        <h5 className="text-info">Add New Operator</h5>
+        <h5 className="text-info"><b>Add New Operator</b></h5>
         <div className="row">
-          <div className="form-group rm10">
+          <div className="form-group rm10" style={{width: 200}}>
+            <h6>Operator Name</h6>
             <input type="text" className="form-control" placeholder="Enter Operator Name" 
                 name="emp_name" value={this.state.emp_name} defaultValue={this.state.emp_name} onChange={this.handleChange} />
           </div>
-          <div className="form-group rm10">
+          <div className="form-group rm10" style={{width: 200}}>
+            <h6>Employee ID</h6>
             <input type="text" className="form-control" placeholder="Enter Employee ID" 
                 name="emp_id" value={this.state.emp_id} defaultValue={this.state.emp_id} onChange={this.handleChange} />
           </div>
           <div className="form-group rm10" style={{width: 200}}>
-            <div>
-              <Select
-                  name="line_id"
-                  value={this.state.line_id}
-                  options={this.props.lines}
-                  onChange={this.handleLineChange}
-                  clearable={false}
-              />
-            </div>
+            <h6>Choose Line</h6>
+            <Select
+                name="line_id"
+                value={this.state.line_id}
+                options={this.props.lines}
+                onChange={this.handleLineChange}
+                clearable={false}
+            />
+          </div>
+          <div className="form-group rm10" style={{width: 200}}>
+            <h6>Choose Section</h6>
+            <Select
+                name="section_id"
+                value={this.state.line_id}
+                options={this.props.lines}
+                onChange={this.handleLineChange}
+                clearable={false}
+            />
           </div>
           <div className="form-group">
+            <h6><b>&nbsp;</b></h6>
             <button type="submit" className="btn btn-primary" disabled={!this.valid()}>Add Operator</button>
           </div>
         </div>

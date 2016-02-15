@@ -54,14 +54,15 @@ Operator = React.createClass({
         <td>{this.props.record.emp_name}</td>
         <td>{this.props.record.emp_id}</td>
         <td>{jQuery.grep(this.props.lines, function(e){ return e.value == this.state.line_id; }.bind(this))[0].label}</td>
+        <td>{jQuery.grep(this.props.lines, function(e){ return e.value == this.state.line_id; }.bind(this))[0].label}</td>
         <td>
-          <a className="btn btn-default btn-sm rm10 pull-left" onClick={this.handleToggle} title="Edit">
+          <a className="btn btn-default btn-xs rm10 pull-left" onClick={this.handleToggle} title="Edit">
             <span className="glyphicon glyphicon-pencil"></span>
           </a>
-          <a className="btn btn-danger btn-sm rm10 pull-left" onClick={this.handleDelete} title="Delete">
+          <a className="btn btn-danger btn-xs rm10 pull-left" onClick={this.handleDelete} title="Delete">
             <span className="glyphicon glyphicon-remove"></span>
           </a>
-          <OperatorSkill />          
+          <OperatorSkill skills={this.props.record.skills} key={"skill-" + this.props.record.skills[0].id} />          
         </td>
       </tr>
     );
@@ -84,6 +85,9 @@ Operator = React.createClass({
                   clearable={false}
               />
             </div>
+        </td>
+        <td>
+
         </td>
         <td>
           <a className="btn btn-primary btn-sm rm10" onClick={this.handleEdit}>Update</a>

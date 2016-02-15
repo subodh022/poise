@@ -43,7 +43,7 @@ Operations = React.createClass({
     return (
       <div>
         <OperationForm handleNewRecord={this.addRecord} />
-        <hr/><h5 className="text-info">Operations List</h5>
+        <hr/><h5 className="text-info"><b>Operations List</b></h5>
         <table className="table table-bordered">
           <thead>
             <tr>

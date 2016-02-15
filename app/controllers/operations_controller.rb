@@ -8,6 +8,7 @@ class OperationsController < ApplicationController
 		@operation = Operation.new(operation_params)
 
 		if @operation.save
+			@operation.create_skills
 			render json: @operation
 		else
 			render json: @operation.errors, status: :unprocessable_entity
