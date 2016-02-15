@@ -4,5 +4,5 @@
 assets_path "assets/javascripts"
 
 asset 'rangeslider.js', 'https://github.com/andreruffert/rangeslider.js.git'
-asset 'material-ui', 'https://github.com/callemall/material-ui.git'
 asset 'react-bootstrap', 'https://github.com/react-bootstrap/react-bootstrap.git'
+asset 'material-ui', 'git://github.com/callemall/material-ui.git'

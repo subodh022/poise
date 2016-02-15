@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211180711) do
+ActiveRecord::Schema.define(version: 20160215080411) do
 
   create_table "lines", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -46,5 +46,16 @@ ActiveRecord::Schema.define(version: 20160211180711) do
   end
 
   add_index "sections", ["line_id"], name: "index_sections_on_line_id", using: :btree
+
+  create_table "skills", force: :cascade do |t|
+    t.integer  "operator_id",  limit: 4
+    t.integer  "operation_id", limit: 4
+    t.integer  "value",        limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "skills", ["operation_id"], name: "index_skills_on_operation_id", using: :btree
+  add_index "skills", ["operator_id"], name: "index_skills_on_operator_id", using: :btree
 
 end
