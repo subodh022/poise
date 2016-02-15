@@ -19,7 +19,7 @@ OperatorForm = React.createClass({
   },
   handleSubmit: function(e) {
     e.preventDefault();
-    return jQuery.post('/operators', {operation: this.state}, this.resetForm, 'JSON');
+    return jQuery.post('/operators', {operator: this.state}, this.resetForm, 'JSON');
   },
   resetForm: function(data) {
       this.props.handleNewRecord(data);

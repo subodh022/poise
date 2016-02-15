@@ -55,8 +55,8 @@ Operator = React.createClass({
         <td>{this.props.record.emp_id}</td>
         <td>{jQuery.grep(this.props.lines, function(e){ return e.value == this.state.line_id; }.bind(this))[0].label}</td>
         <td>
-          <a className="btn btn-default btn-xs rm10 pull-left" onClick={this.handleToggle}>Edit</a>
-          <a className="btn btn-danger btn-xs rm10 pull-left" onClick={this.handleDelete}>Delete</a>
+          <a className="btn btn-default btn-sm rm10 pull-left" onClick={this.handleToggle}>Edit</a>
+          <a className="btn btn-danger btn-sm rm10 pull-left" onClick={this.handleDelete}>Delete</a>
           <OperatorSkill />          
         </td>
       </tr>
@@ -82,8 +82,8 @@ Operator = React.createClass({
             </div>
         </td>
         <td>
-          <a className="btn btn-primary btn-xs rm10" onClick={this.handleEdit}>Update</a>
-          <a className="btn btn-danger btn-xs rm10" onClick={this.handleToggle}>Cancel</a>
+          <a className="btn btn-primary btn-sm rm10" onClick={this.handleEdit}>Update</a>
+          <a className="btn btn-danger btn-sm rm10" onClick={this.handleToggle}>Cancel</a>
         </td>
       </tr>
     );

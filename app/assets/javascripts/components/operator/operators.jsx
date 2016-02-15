@@ -52,7 +52,7 @@ Operators = React.createClass({
           <thead>
             <tr>
               <th>Operator Name</th>
-              <th>Emp ID</th>
+              <th>Employee ID</th>
               <th>Line</th>
               <th>Actions</th>
             </tr>
