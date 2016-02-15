@@ -40,7 +40,7 @@ class OperatorsController < ApplicationController
 				result.last.update_attributes!(value: skill[1]['value'].to_i)
 			end
 		end
-		render json: result
+		render json: result.to_json({:methods => :operation_title})
 	end
 
 	private
