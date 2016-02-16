@@ -2,7 +2,8 @@ class OperatorsController < ApplicationController
 
 	def index
 		@records = Operator.includes(:skills => :operation).to_json(:include => { :skills => { :methods => :operation_title }})
-		@lines = Line.all
+		@lines = Line.includes(:sections).where("sections.enabled: true").to_json(:include => :sections)
+		@sections = Section.all
 	end
 
 	def create

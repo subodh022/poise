@@ -3,7 +3,8 @@ OperatorForm = React.createClass({
     return {
       emp_name: '',
       emp_id: '',
-      line_id: this.props.lines[0].value
+      line_id: this.props.lines[0].value,
+      section_id: this.props.lines[0].sections[0].value
     };
   },
   valid: function() {
@@ -16,6 +17,10 @@ OperatorForm = React.createClass({
   },
   handleLineChange: function(v){
       this.setState({line_id: v.value});
+      this.setState({section_id: v.sections[0].value});
+  },
+  handleSectionChange: function(v){
+      this.setState({section_id: v.value});
   },
   handleSubmit: function(e) {
     e.preventDefault();
@@ -54,9 +59,9 @@ OperatorForm = React.createClass({
             <h6>Choose Section</h6>
             <Select
                 name="section_id"
-                value={this.state.line_id}
-                options={this.props.lines}
-                onChange={this.handleLineChange}
+                value={this.state.section_id}
+                options={jQuery.grep(this.props.lines, function(e){ return e.value == this.state.line_id; }.bind(this))[0].sections}
+                onChange={this.handleSectionChange}
                 clearable={false}
             />
           </div>

@@ -1,7 +1,10 @@
 Operators = React.createClass({
   getInitialState: function() {
     options = jQuery.map( this.props.lines, function( a ) {
-      return { value: a.id, label: a.title };
+      return { value: a.id, label: a.title, sections: jQuery.map( a.sections, function( s ) {
+          return { value: s.id, label: s.name };
+        })
+      };
     });
     return {
       records: JSON.parse(this.props.data),
