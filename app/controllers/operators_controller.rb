@@ -2,7 +2,7 @@ class OperatorsController < ApplicationController
 
 	def index
 		@records = Operator.includes(:skills => :operation).to_json(:include => { :skills => { :methods => :operation_title }})
-		@lines = Line.includes(:sections).where("sections.enabled: true").to_json(:include => :sections)
+		@lines = Line.includes(:enabled_sections).to_json(:include => :enabled_sections)
 		@sections = Section.all
 	end
 
@@ -28,6 +28,7 @@ class OperatorsController < ApplicationController
 
 	def destroy
 		@operator = Operator.find(params[:id])
+		@operator.delete_skills
 		@operator.destroy
 		head :no_content
 	end
@@ -47,6 +48,6 @@ class OperatorsController < ApplicationController
 	private
 
     def operator_params
-    	params.require(:operator).permit(:emp_name, :emp_id, :line_id)
+    	params.require(:operator).permit(:emp_name, :emp_id, :line_id, :section_id)
     end
 end

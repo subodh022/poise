@@ -2,6 +2,7 @@ class OperationsController < ApplicationController
 
 	def index
 		@records = Operation.all
+		@sections = Section.group(:name)
 	end
 
 	def create
@@ -26,6 +27,7 @@ class OperationsController < ApplicationController
 
 	def destroy
 		@record = Operation.find(params[:id])
+		@record.delete_skills
 		@record.destroy
 		head :no_content
 	end
@@ -33,6 +35,6 @@ class OperationsController < ApplicationController
 	private
 
     def operation_params
-    	params.require(:operation).permit(:title, :smv)
+    	params.require(:operation).permit(:title, :smv, :section_name)
     end
 end

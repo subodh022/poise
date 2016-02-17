@@ -1,7 +1,11 @@
 Operations = React.createClass({
   getInitialState: function() {
+    options = jQuery.map( this.props.sections, function( a ) {
+      return { value: a.name, label: a.name };
+    });
     return {
-      records: this.props.data
+      records: this.props.data,
+      options: options
     };
   },
   getDefaultProps: function() {
@@ -14,6 +18,7 @@ Operations = React.createClass({
     records = React.addons.update(this.state.records, {
       $push: [record]
     });
+    ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Operation "+ record.title +" Added."} />, document.getElementById("alert_messages"));
     return this.setState({
       records: records
     });
@@ -24,7 +29,8 @@ Operations = React.createClass({
     records = React.addons.update(this.state.records, {
       $splice: [[index, 1]]
     });
-    return this.replaceState({
+    ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Operation "+ record.title +" Removed."} />, document.getElementById("alert_messages"));
+    return this.setState({
       records: records
     });
   },
@@ -34,7 +40,8 @@ Operations = React.createClass({
     records = React.addons.update(this.state.records, {
       $splice: [[index, 1, data]]
     });
-    return this.replaceState({
+    ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Operation "+ record.title +" Updated."} />, document.getElementById("alert_messages"));
+    return this.setState({
       records: records
     });
   },
@@ -42,19 +49,20 @@ Operations = React.createClass({
     var record;
     return (
       <div>
-        <OperationForm handleNewRecord={this.addRecord} />
+        <OperationForm sections={this.state.options} handleNewRecord={this.addRecord} />
         <hr/><h5 className="text-info"><b>Operations List</b></h5>
         <table className="table table-bordered">
           <thead>
             <tr>
               <th>Operation Title</th>
               <th>SMV Value</th>
+              <th>Section</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {this.state.records.map(function(record, i){
-                return <Operation handleDeleteRecord={this.deleteRecord} record={record} key={record.id}  handleEditRecord={this.updateRecord} />;
+                return <Operation sections={this.state.options} handleDeleteRecord={this.deleteRecord} record={record} key={record.id}  handleEditRecord={this.updateRecord} />;
             }.bind(this))}
           </tbody>
         </table>

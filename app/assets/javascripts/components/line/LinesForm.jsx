@@ -24,8 +24,8 @@ LinesForm = React.createClass({
 			url: '/lines/' + this.props.data.id, 
 			data: jQuery("#line-form").serialize(),
 			success: function(message){
-				console.log(message);
-			},
+				ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={this.state.title +" Updated."} />, document.getElementById("alert_messages"));
+			}.bind(this),
 			error: function(error){
 				alert("Something went wrong.");
 			}

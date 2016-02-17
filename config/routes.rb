@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :machines
   resources :skills
   resources :operators
   resources :operations

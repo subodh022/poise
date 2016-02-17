@@ -26,5 +26,6 @@ module Poise
     config.react.addons = true
 
     config.assets.paths << Rails.root.join('vendor', 'assets')
+    config.assets.paths << Rails.root.join('node_modules')
   end
 end

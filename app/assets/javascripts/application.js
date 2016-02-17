@@ -19,18 +19,11 @@
 //= require_tree .
 //= require rangeslider.js/dist/rangeslider.js
 
-// $(function() {
-    var Modal = ReactBootstrap.Modal;
-	var Alert = ReactBootstrap.Alert;
-	var Popover = ReactBootstrap.Popover;
-	var Tooltip = ReactBootstrap.Tooltip;
-	var Button = ReactBootstrap.Button;
-	// var Modal.Header = ReactBootstrap.Modal.Header;
-	// var Modal.Title = ReactBootstrap.Modal.Title;
-	// var Modal.Body = ReactBootstrap.Modal.Body;
-	var OverlayTrigger = ReactBootstrap.OverlayTrigger;
-	// var Modal.Footer = ReactBootstrap.Modal.Footer;
-	// var Alert = ReactBootstrap.Alert;
-	// var Alert = ReactBootstrap.Alert;
-// });
-
+var Modal = ReactBootstrap.Modal;
+var Alert = ReactBootstrap.Alert;
+var Popover = ReactBootstrap.Popover;
+var Tooltip = ReactBootstrap.Tooltip;
+var Button = ReactBootstrap.Button;
+var OverlayTrigger = ReactBootstrap.OverlayTrigger;
+var Tabs = ReactBootstrap.Tabs;
+var Tab = ReactBootstrap.Tab;

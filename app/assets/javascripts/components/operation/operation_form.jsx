@@ -2,11 +2,15 @@ OperationForm = React.createClass({
   getInitialState: function() {
     return {
       title: '',
-      smv: ''
+      smv: '',
+      section_name: this.props.sections[0].value
     };
   },
   valid: function() {
     return this.state.title && this.state.smv;
+  },
+  handleSectionChange: function(v){
+    this.setState({section_name: v.value});
   },
   handleChange: function(e) {
     var name;
@@ -35,6 +39,16 @@ OperationForm = React.createClass({
             <h6>SMV Value</h6>
             <input type="text" className="form-control" placeholder="Enter SMV Value" 
                 name="smv" value={this.state.smv} defaultValue={this.state.smv} onChange={this.handleChange} />
+          </div>
+          <div className="form-group rm10" style={{width: 200}}>
+            <h6>Choose Section</h6>
+            <Select
+                name="section_name"
+                value={this.state.section_name}
+                options={this.props.sections}
+                onChange={this.handleSectionChange}
+                clearable={false}
+            />
           </div>
           <div className="form-group">
             <h6><b>&nbsp;</b></h6>

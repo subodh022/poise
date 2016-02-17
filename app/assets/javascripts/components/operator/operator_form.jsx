@@ -16,11 +16,11 @@ OperatorForm = React.createClass({
     return this.setState({ [name] : e.target.value});
   },
   handleLineChange: function(v){
-      this.setState({line_id: v.value});
-      this.setState({section_id: v.sections[0].value});
+    this.setState({line_id: v.value});
+    this.setState({section_id: v.sections[0].value});
   },
   handleSectionChange: function(v){
-      this.setState({section_id: v.value});
+    this.setState({section_id: v.value});
   },
   handleSubmit: function(e) {
     e.preventDefault();

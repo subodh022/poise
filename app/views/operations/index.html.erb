@@ -1,2 +1,3 @@
 <h3 class="text-danger">Operations</h3><hr/>
-<%= react_component 'Operations', { data: @records } %>
+<div id="alert_messages"></div>
+<%= react_component 'Operations', { data: @records, sections: @sections } %>

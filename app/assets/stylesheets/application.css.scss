@@ -30,3 +30,16 @@
 .clear {
 	clear: both;
 }
+
+.alert-dismissable, .alert-dismissible {
+    padding: 10px !important; 
+    padding-right: 35px !important;
+}
+
+#operations li {
+	float: right;
+}
+
+#operations-header {
+	float: left;
+}

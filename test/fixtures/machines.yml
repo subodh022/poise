@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  mac_id: MyString
+  attachment: MyString
+  tot_units: 1
+  avl_units: 1
+
+two:
+  name: MyString
+  mac_id: MyString
+  attachment: MyString
+  tot_units: 1
+  avl_units: 1
