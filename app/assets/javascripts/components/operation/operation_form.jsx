@@ -27,8 +27,8 @@ OperationForm = React.createClass({
   },
   render: function() {
     return (
+      <Panel header={"Add New Operation"} >
       <form className="form-inline" onSubmit={this.handleSubmit} id="op-form">
-        <h5 className="text-info"><b>Add New Operation</b></h5>
         <div className="row">
           <div className="form-group rm10">
             <h6>Operation Title</h6>
@@ -56,6 +56,7 @@ OperationForm = React.createClass({
           </div>
         </div>
       </form>
+      </Panel>
     );
   }
 });

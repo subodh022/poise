@@ -64,7 +64,7 @@ Operator = React.createClass({
   recordRow: function() {
     return (
       <tr>
-        <td>{this.props.record.emp_name}</td>
+        <td><span className="glyphicon glyphicon-user"></span> &nbsp;{this.props.record.emp_name}</td>
         <td>{this.props.record.emp_id}</td>
         <td>{this.lineName()}</td>
         <td>{this.sectionName()}</td>
@@ -75,7 +75,7 @@ Operator = React.createClass({
           <a className="btn btn-danger btn-xs rm10 pull-left" onClick={this.handleDelete} title="Delete">
             <span className="glyphicon glyphicon-remove"></span>
           </a>
-          <OperatorSkill name={this.props.record.emp_name} skills={this.props.record.skills} />          
+                    
         </td>
       </tr>
     );
@@ -113,7 +113,7 @@ Operator = React.createClass({
         </td>
         <td>
           <a className="btn btn-primary btn-xs rm10" onClick={this.handleEdit} title="Save">
-            <span className="glyphicon glyphicon-floppy-disk"></span>
+            <span className="glyphicon glyphicon-ok"></span>
           </a>
           <a className="btn btn-danger btn-xs rm10" onClick={this.handleToggle} title="Cancel">
             <span className="glyphicon glyphicon-remove"></span>

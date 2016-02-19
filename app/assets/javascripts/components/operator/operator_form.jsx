@@ -32,8 +32,9 @@ OperatorForm = React.createClass({
   },
   render: function() {
     return (
+      <div>
+      <Panel header={"Add New Operator"} >
       <form className="form-inline" onSubmit={this.handleSubmit} id="op-form">
-        <h5 className="text-info"><b>Add New Operator</b></h5>
         <div className="row">
           <div className="form-group rm10" style={{width: 200}}>
             <h6>Operator Name</h6>
@@ -71,6 +72,8 @@ OperatorForm = React.createClass({
           </div>
         </div>
       </form>
+      </Panel>
+      </div>
     );
   }
 });

@@ -27,3 +27,14 @@ var Button = ReactBootstrap.Button;
 var OverlayTrigger = ReactBootstrap.OverlayTrigger;
 var Tabs = ReactBootstrap.Tabs;
 var Tab = ReactBootstrap.Tab;
+var ProgressBar = ReactBootstrap.ProgressBar;
+var Fade = ReactBootstrap.Fade;
+var Navbar = ReactBootstrap.Navbar;
+var Nav = ReactBootstrap.Nav;
+var NavItem = ReactBootstrap.NavItem;
+var NavDropdown = ReactBootstrap.NavDropdown;
+var MenuItem = ReactBootstrap.MenuItem;
+var Panel = ReactBootstrap.Panel;
+
+$(function() {
+});

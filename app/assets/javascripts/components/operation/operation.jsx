@@ -54,7 +54,7 @@ Operation = React.createClass({
   recordRow: function() {
     return (
       <tr>
-        <td>{this.props.record.title}</td>
+        <td><span className="glyphicon glyphicon-wrench"></span> &nbsp;{this.props.record.title}</td>
         <td>{this.props.record.smv}</td>
         <td>{this.sectionName()}</td>
         <td>
@@ -89,7 +89,7 @@ Operation = React.createClass({
         </td>
         <td>
           <a className="btn btn-primary btn-xs rm10" onClick={this.handleEdit} title="Save">
-            <span className="glyphicon glyphicon-floppy-disk"></span>
+            <span className="glyphicon glyphicon-ok"></span>
           </a>
           <a className="btn btn-danger btn-xs rm10" onClick={this.handleToggle} title="Cancel">
             <span className="glyphicon glyphicon-remove"></span>

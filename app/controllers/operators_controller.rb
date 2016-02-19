@@ -42,7 +42,7 @@ class OperatorsController < ApplicationController
 				result.last.update_attributes!(value: skill[1]['value'].to_i)
 			end
 		end
-		render json: result.to_json({:methods => :operation_title})
+		render json: Operator.includes(:skills => :operation).find(result.first.operator_id).to_json(:include => { :skills => { :methods => :operation_title }})
 	end
 
 	private

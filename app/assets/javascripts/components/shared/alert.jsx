@@ -8,9 +8,13 @@ const AlertAutoDismissable = React.createClass({
   render() {
     if (this.state.alertVisible) {
       return (
-          <Alert bsStyle={this.props.type} onDismiss={this.handleAlertDismiss} dismissAfter={5000}>
-            <strong>{this.props.header}</strong> {this.props.message}
-          </Alert>
+        <div>
+          <Fade in={this.state.alertVisible} timeout={1000}>
+            <Alert bsStyle={this.props.type} onDismiss={this.handleAlertDismiss} dismissAfter={5000}>
+              <strong>{this.props.header}</strong> {this.props.message}
+            </Alert>
+          </Fade>
+        </div>
       );
     }
     return (

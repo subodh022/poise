@@ -56,7 +56,7 @@ Machine = React.createClass({
   recordRow: function() {
     return (
       <tr>
-        <td>{this.props.record.name}</td>
+        <td><span className="glyphicon glyphicon-print"></span> &nbsp;{this.props.record.name}</td>
         <td>{this.props.record.mac_id}</td>
         <td>{(this.props.record.attachment == "") ? <i className="text-muted">None</i> : this.props.record.attachment}</td>
         <td>{this.lineName()}</td>
@@ -101,7 +101,7 @@ Machine = React.createClass({
               ref="avl_units" disabled="true" /></td>
         <td>
           <a className="btn btn-primary btn-xs rm10" onClick={this.handleEdit} title="Save">
-            <span className="glyphicon glyphicon-floppy-disk"></span>
+            <span className="glyphicon glyphicon-ok"></span>
           </a>
           <a className="btn btn-danger btn-xs rm10" onClick={this.handleToggle} title="Cancel">
             <span className="glyphicon glyphicon-remove"></span>

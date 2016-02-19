@@ -29,8 +29,8 @@ MachineForm = React.createClass({
   },
   render: function() {
     return (
+      <Panel header={"Add New Machine"} >
       <form className="form-inline" onSubmit={this.handleSubmit} id="op-form">
-        <h5 className="text-info"><b>Add New Machine</b></h5>
         <div className="row">
           <div className="form-group rm10" style={{width: 200}}>
             <h6>Machine Name</h6>
@@ -68,6 +68,7 @@ MachineForm = React.createClass({
           </div>
         </div>
       </form>
+      </Panel>
     );
   }
 });
