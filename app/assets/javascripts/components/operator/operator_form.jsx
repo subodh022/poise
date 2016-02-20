@@ -33,7 +33,7 @@ OperatorForm = React.createClass({
   render: function() {
     return (
       <div>
-      <Panel header={"Add New Operator"} >
+      <Panel header={<span><span className="glyphicon glyphicon-plus-sign"></span> &nbsp;Add New Operator</span>} >
       <form className="form-inline" onSubmit={this.handleSubmit} id="op-form">
         <div className="row">
           <div className="form-group rm10" style={{width: 200}}>

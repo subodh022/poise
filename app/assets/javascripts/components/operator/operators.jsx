@@ -55,7 +55,7 @@ Operators = React.createClass({
     return (
       <div id="operations">
         <OperatorForm lines={this.state.options} handleNewRecord={this.addRecord} />
-        <hr/><h5 id="operations-header" className="text-info"><b>Operators List</b></h5>
+        <hr/><h5 id="operations-header" className="text-info"><span className="glyphicon glyphicon-list"></span> &nbsp;<b>Operators List</b></h5>
         <Tabs defaultActiveKey={1}>
           <Tab eventKey={1} title="Info View">
             <div className="form-group"></div>

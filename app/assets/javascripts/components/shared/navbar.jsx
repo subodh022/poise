@@ -14,7 +14,7 @@ const NavbarInstance = React.createClass({
           <Nav pullRight>
             <NavDropdown eventKey={3} title={<span><span className="glyphicon glyphicon-menu-hamburger"></span> Menu</span>} id="basic-nav-dropdown">
               <MenuItem eventKey={3.1} href="/lines">
-                <span className="glyphicon glyphicon-th-list"></span> &nbsp;Lines
+                <span className="glyphicon glyphicon-tasks"></span> &nbsp;Lines
               </MenuItem>
               <MenuItem eventKey={3.2} href="/operations">
                 <span className="glyphicon glyphicon-wrench"></span> &nbsp;Operations

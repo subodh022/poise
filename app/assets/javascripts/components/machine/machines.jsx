@@ -51,7 +51,7 @@ Machines = React.createClass({
     return (
       <div>
         <MachineForm lines={this.state.options} handleNewRecord={this.addRecord} />
-        <hr/><h5 className="text-info"><b>Machines List</b></h5>
+        <hr/><h5 className="text-info"><span className="glyphicon glyphicon-list"></span> &nbsp;<b>Machines List</b></h5>
         <table className="table table-bordered">
           <thead>
             <tr>

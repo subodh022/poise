@@ -20,6 +20,7 @@ class OperatorsController < ApplicationController
 	def update
 		@operator = Operator.find(params[:id])
 		if @operator.update(operator_params)
+		  @operator.update_skills
 		  render json: Operator.includes(:skills => :operation).find(@operator.id).to_json(:include => { :skills => { :methods => :operation_title }})
 		else
 		  render json: @operator.errors, status: :unprocessable_entity

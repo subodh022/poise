@@ -27,7 +27,7 @@ OperationForm = React.createClass({
   },
   render: function() {
     return (
-      <Panel header={"Add New Operation"} >
+      <Panel header={<span><span className="glyphicon glyphicon-plus-sign"></span> &nbsp;Add New Operation</span>} >
       <form className="form-inline" onSubmit={this.handleSubmit} id="op-form">
         <div className="row">
           <div className="form-group rm10">

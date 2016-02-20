@@ -19,6 +19,7 @@ class OperationsController < ApplicationController
 	def update
 		@record = Operation.find(params[:id])
 		if @record.update(operation_params)
+		  @record.update_skills
 		  render json: @record
 		else
 		  render json: @record.errors, status: :unprocessable_entity

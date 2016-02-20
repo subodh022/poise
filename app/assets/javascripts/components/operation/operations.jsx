@@ -50,7 +50,7 @@ Operations = React.createClass({
     return (
       <div>
         <OperationForm sections={this.state.options} handleNewRecord={this.addRecord} />
-        <hr/><h5 className="text-info"><b>Operations List</b></h5>
+        <hr/><h5 className="text-info"><span className="glyphicon glyphicon-list"></span> &nbsp;<b>Operations List</b></h5>
         <table className="table table-bordered">
           <thead>
             <tr>

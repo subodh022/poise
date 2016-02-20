@@ -102,7 +102,7 @@ OperatorSkillMatrix = React.createClass({
                     {this.state.records.map(function(record, i){
                       return (
                         <tr>
-                          <td>{record.emp_name + " (" + record.emp_id + ")"}</td>
+                          <td><span className="glyphicon glyphicon-user"></span> &nbsp;{record.emp_name + " (" + record.emp_id + ")"}</td>
                           {record.skills.map(function(op, i){
                             return (
                               <td><ProgressCircle key={op.id} size="small" value={op.value} /></td>

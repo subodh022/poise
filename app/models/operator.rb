@@ -12,6 +12,10 @@ class Operator < ActiveRecord::Base
 		end
 	end
 
+	def update_skills
+		# TODO
+	end
+
 	def delete_skills
 		ActiveRecord::Base.transaction do
 			Skill.where("operator_id = ?", id).each do |skill|

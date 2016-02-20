@@ -29,7 +29,7 @@ MachineForm = React.createClass({
   },
   render: function() {
     return (
-      <Panel header={"Add New Machine"} >
+      <Panel header={<span><span className="glyphicon glyphicon-plus-sign"></span> &nbsp;Add New Machine</span>} >
       <form className="form-inline" onSubmit={this.handleSubmit} id="op-form">
         <div className="row">
           <div className="form-group rm10" style={{width: 200}}>
