@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :work_stations
+  resources :operation_bulletins do
+    member do
+      get "manage" => "operation_bulletins#manage"
+    end
+  end
   resources :machines
   resources :skills
   resources :operators

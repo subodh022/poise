@@ -35,6 +35,7 @@ var NavItem = ReactBootstrap.NavItem;
 var NavDropdown = ReactBootstrap.NavDropdown;
 var MenuItem = ReactBootstrap.MenuItem;
 var Panel = ReactBootstrap.Panel;
+var Well = ReactBootstrap.Well;
 
 $(function() {
 });

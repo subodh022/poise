@@ -1,0 +1,3 @@
+<h3 class="text-danger">Manage - Operation Bulletin</h3>
+<div id="alert_messages"></div>
+<%= react_component 'OBManagement', { data: JSON.parse(@ob), sections: JSON.parse(@sections), machines: @machines } %>

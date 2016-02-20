@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217125907) do
+ActiveRecord::Schema.define(version: 20160220111405) do
 
   create_table "lines", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 20160217125907) do
   end
 
   add_index "machines", ["line_id"], name: "index_machines_on_line_id", using: :btree
+
+  create_table "operation_bulletins", force: :cascade do |t|
+    t.integer  "line_id",    limit: 4
+    t.string   "style",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "operation_bulletins", ["line_id"], name: "index_operation_bulletins_on_line_id", using: :btree
 
   create_table "operations", force: :cascade do |t|
     t.string   "title",        limit: 255
@@ -72,5 +81,21 @@ ActiveRecord::Schema.define(version: 20160217125907) do
 
   add_index "skills", ["operation_id"], name: "index_skills_on_operation_id", using: :btree
   add_index "skills", ["operator_id"], name: "index_skills_on_operator_id", using: :btree
+
+  create_table "work_stations", force: :cascade do |t|
+    t.integer  "operation_bulletin_id", limit: 4
+    t.integer  "section_id",            limit: 4
+    t.integer  "operation_id",          limit: 4
+    t.integer  "machine_id",            limit: 4
+    t.integer  "operator_id",           limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "work_stations", ["machine_id"], name: "index_work_stations_on_machine_id", using: :btree
+  add_index "work_stations", ["operation_bulletin_id"], name: "index_work_stations_on_operation_bulletin_id", using: :btree
+  add_index "work_stations", ["operation_id"], name: "index_work_stations_on_operation_id", using: :btree
+  add_index "work_stations", ["operator_id"], name: "index_work_stations_on_operator_id", using: :btree
+  add_index "work_stations", ["section_id"], name: "index_work_stations_on_section_id", using: :btree
 
 end
