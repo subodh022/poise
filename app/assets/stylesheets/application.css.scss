@@ -109,11 +109,12 @@ tr.borderless, td.borderless {
 }
 
 .footer {
-  position: absolute;
-  bottom: 5px;
+  position: relative;
+  bottom: 0;
   width: 100%;
   border-top: 1px solid #ccc;
   padding: 6px 0;
+  margin-top: 50px;
 }
 
 $bgDefault      : #ffffff;

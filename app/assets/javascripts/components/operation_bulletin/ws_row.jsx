@@ -1,10 +1,12 @@
 const WSRow = React.createClass({
   getInitialState: function() {
+    operation_id = (this.props.operations.length > 0) ? this.props.operations[0].value : 0
+    machine_id = (this.props.machines.length > 0) ? this.props.machines[0].value : 0
     return {
       edit: false,
       section_id: this.props.section_id,
-      operation_id: this.props.operations[0].value,
-      machine_id: this.props.machines[0].value
+      operation_id: operation_id,
+      machine_id: machine_id
     };
   },
   handleToggle: function(e) {
