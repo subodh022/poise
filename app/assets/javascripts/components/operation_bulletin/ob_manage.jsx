@@ -9,7 +9,12 @@ OBManagement = React.createClass({
     return (
       <div>
         <div className="pull-right" style={{marginTop: '20px'}}>
-          <a className="btn btn-primary btn-sm" title="Manage Entries" href={"/operation_bulletins/" + this.state.record.id + "/generate"}>
+          <a className="btn btn-primary btn-sm" title="OB List" href={"/operation_bulletins/"}>
+            <span className="glyphicon glyphicon-list-alt"></span> &nbsp;OB List
+          </a>
+        </div>
+        <div className="pull-right rm10" style={{marginTop: '20px'}}>
+          <a className="btn btn-primary btn-sm" title="Generate Bulletin" href={"/operation_bulletins/" + this.state.record.id + "/generate"}>
             <span className="glyphicon glyphicon-list-alt"></span> &nbsp;Generate Final Bulletin
           </a>
         </div>

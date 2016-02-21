@@ -9,7 +9,12 @@ OBGenerate = React.createClass({
     return (
       <div>
         <div className="pull-right" style={{marginTop: '20px'}}>
-          <a className="btn btn-primary btn-sm" title="Manage Entries" href={"/operation_bulletins/" + this.state.record.id + "/manage"}>
+          <a className="btn btn-primary btn-sm" title="OB List" href={"/operation_bulletins/"}>
+            <span className="glyphicon glyphicon-list-alt"></span> &nbsp;OB List
+          </a>
+        </div>
+        <div className="pull-right rm10" style={{marginTop: '20px'}}>
+          <a className="btn btn-primary btn-sm" title="OB Manage" href={"/operation_bulletins/" + this.state.record.id + "/manage"}>
             <span className="glyphicon glyphicon-list-alt"></span> &nbsp;Back to OB Manage
           </a>
         </div>

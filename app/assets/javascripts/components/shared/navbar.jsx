@@ -29,9 +29,9 @@ const NavbarInstance = React.createClass({
                 <span className="glyphicon glyphicon-blackboard"></span> &nbsp;Operation Bulletins
               </MenuItem>
             </NavDropdown>
-            <NavItem eventKey={1} href="#">
+            {/* <NavItem eventKey={1} href="#" className="text-muted">
               <span className="glyphicon glyphicon-log-out"></span> Logout
-            </NavItem>
+            </NavItem> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
