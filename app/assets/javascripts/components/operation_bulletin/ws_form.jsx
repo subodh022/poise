@@ -10,6 +10,9 @@ WorkStationForm = React.createClass({
       machine_id: machine_id
     };
   },
+  valid: function() {
+    return (this.state.operation_id != 0) && (this.state.machine_id != 0);
+  },
   open: function() {
     this.setState({open: true});
   },
@@ -64,7 +67,7 @@ WorkStationForm = React.createClass({
               </div>
               <div className="form-group">
                 <h6><b>&nbsp;</b></h6>
-                <button type="submit" className="btn btn-default btn-sm">
+                <button type="submit" className="btn btn-default btn-sm" disabled={!this.valid()}>
                   <span className="glyphicon glyphicon-plus"></span> Add
                 </button>&nbsp;&nbsp;
                 <button className="btn btn-danger btn-sm" onClick={this.close}>

@@ -31,6 +31,7 @@ Operation = React.createClass({
     data = {
       title: ReactDOM.findDOMNode(this.refs.title).value,
       smv: ReactDOM.findDOMNode(this.refs.smv).value,
+      dhu: ReactDOM.findDOMNode(this.refs.dhu).value,
       section_name: this.state.section_name
     };
     return $.ajax({
@@ -56,6 +57,7 @@ Operation = React.createClass({
       <tr>
         <td><span className="glyphicon glyphicon-wrench"></span> &nbsp;{this.props.record.title}</td>
         <td>{this.props.record.smv}</td>
+        <td>{this.props.record.dhu}</td>
         <td>{this.sectionName()}</td>
         <td>
           <a className="btn btn-default btn-xs rm10" onClick={this.handleToggle} title="Edit">
@@ -75,6 +77,8 @@ Operation = React.createClass({
               defaultValue={this.props.record.title} ref="title" /></td>
         <td><input className="form-control" type="text" name="smv" 
               defaultValue={this.props.record.smv} ref="smv" /></td>
+        <td><input className="form-control" type="text" name="dhu" 
+              defaultValue={this.props.record.dhu} ref="dhu" /></td>
         <td width="180px">
           <div>
             <Select

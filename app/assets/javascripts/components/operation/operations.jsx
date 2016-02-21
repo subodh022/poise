@@ -55,7 +55,8 @@ Operations = React.createClass({
           <thead>
             <tr>
               <th>Operation Title</th>
-              <th>SMV Value</th>
+              <th>SMV Value (Minutes)</th>
+              <th>DHU Value</th>
               <th>Section</th>
               <th>Actions</th>
             </tr>

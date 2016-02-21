@@ -56,6 +56,7 @@ OperationBulletins = React.createClass({
             <tr>
               <th>Line</th>
               <th>Style Name</th>
+              <th>Takt Time (Minutes)</th>
               <th>Actions</th>
             </tr>
           </thead>

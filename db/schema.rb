@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220111405) do
+ActiveRecord::Schema.define(version: 20160221100617) do
 
   create_table "lines", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160220111405) do
     t.string   "style",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.float    "takt_time",  limit: 24
   end
 
   add_index "operation_bulletins", ["line_id"], name: "index_operation_bulletins_on_line_id", using: :btree
@@ -45,9 +46,10 @@ ActiveRecord::Schema.define(version: 20160220111405) do
   create_table "operations", force: :cascade do |t|
     t.string   "title",        limit: 255
     t.float    "smv",          limit: 24
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "section_name", limit: 255
+    t.float    "dhu",          limit: 24,  default: 0.0
   end
 
   create_table "operators", force: :cascade do |t|

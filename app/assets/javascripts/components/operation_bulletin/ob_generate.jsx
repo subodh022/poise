@@ -1,4 +1,4 @@
-OBManagement = React.createClass({
+OBGenerate = React.createClass({
   getInitialState: function() {
     return {
       record: this.props.data,
@@ -9,8 +9,8 @@ OBManagement = React.createClass({
     return (
       <div>
         <div className="pull-right" style={{marginTop: '20px'}}>
-          <a className="btn btn-primary btn-sm" title="Manage Entries" href={"/operation_bulletins/" + this.state.record.id + "/generate"}>
-            <span className="glyphicon glyphicon-list-alt"></span> &nbsp;Generate Final Bulletin
+          <a className="btn btn-primary btn-sm" title="Manage Entries" href={"/operation_bulletins/" + this.state.record.id + "/manage"}>
+            <span className="glyphicon glyphicon-list-alt"></span> &nbsp;Back to OB Manage
           </a>
         </div>
         <div className="clear"></div>
@@ -42,9 +42,9 @@ OBManagement = React.createClass({
                 return (
                   <Tab eventKey={i} title={section.name}>
                     <div className="form-group"></div>
-                    <WorkStation records={section.workstations} operations={section.operations} 
-                      machines={this.props.machines} ob_id={this.state.record.id} section_id={section.id} 
-                      key={section.id} />
+                    <OBWorkStation records={section.workstations} 
+                      line_capacity={this.state.record.line_capacity} 
+                      ob_id={this.state.record.id} section_id={section.id} key={section.id} />
                   </Tab>
                 );
             }.bind(this))}

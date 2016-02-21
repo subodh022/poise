@@ -27,5 +27,7 @@ module Poise
 
     config.assets.paths << Rails.root.join('vendor', 'assets')
     config.assets.paths << Rails.root.join('node_modules')
+
+    config.autoload_paths << Rails.root.join('lib')
   end
 end

@@ -62,7 +62,7 @@ const OperatorSkill = React.createClass({
                   <div className="row">
                     <label className="col-xs-2">{skill.operation_title}</label>
                     <div className="col-xs-9">
-                      <input type="range" id={skill.id} min="1" max="10" step="1" defaultValue={skill.value} onChange={this.handleSliderChange} />
+                      <input type="range" id={skill.id} min="0" max="10" step="1" defaultValue={skill.value} onChange={this.handleSliderChange} />
                     </div>
                     <label className="col-xs-1">{skill.value*10 + "%"}</label>
                   </div>

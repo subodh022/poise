@@ -2,11 +2,12 @@ OperationBulletinForm = React.createClass({
   getInitialState: function() {
     return {
       style: '',
+      takt_time: '',
       line_id: this.props.lines[0].value
     };
   },
   valid: function() {
-    return this.state.style && true;
+    return this.state.style && this.state.takt_time;
   },
   handleLineChange: function(v){
     this.setState({line_id: v.value});
@@ -43,6 +44,11 @@ OperationBulletinForm = React.createClass({
             <h6>Style Name</h6>
             <input type="text" className="form-control" placeholder="Enter Style Name" 
                 name="style" value={this.state.style} defaultValue={this.state.style} onChange={this.handleChange} />
+          </div>
+          <div className="form-group rm10">
+            <h6>Takt Time (Minutes)</h6>
+            <input type="text" className="form-control" placeholder="Enter Takt Time" 
+                name="takt_time" value={this.state.takt_time} defaultValue={this.state.takt_time} onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <h6><b>&nbsp;</b></h6>

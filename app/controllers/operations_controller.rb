@@ -36,6 +36,6 @@ class OperationsController < ApplicationController
 	private
 
     def operation_params
-    	params.require(:operation).permit(:title, :smv, :section_name)
+    	params.require(:operation).permit(:title, :smv, :dhu, :section_name)
     end
 end

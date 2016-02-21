@@ -3,11 +3,12 @@ OperationForm = React.createClass({
     return {
       title: '',
       smv: '',
+      dhu: '',
       section_name: this.props.sections[0].value
     };
   },
   valid: function() {
-    return this.state.title && this.state.smv;
+    return this.state.title && this.state.smv && this.state.dhu;
   },
   handleSectionChange: function(v){
     this.setState({section_name: v.value});
@@ -36,9 +37,14 @@ OperationForm = React.createClass({
                 name="title" value={this.state.title} defaultValue={this.state.title} onChange={this.handleChange} />
           </div>
           <div className="form-group rm10">
-            <h6>SMV Value</h6>
+            <h6>SMV Value (Minutes)</h6>
             <input type="text" className="form-control" placeholder="Enter SMV Value" 
                 name="smv" value={this.state.smv} defaultValue={this.state.smv} onChange={this.handleChange} />
+          </div>
+          <div className="form-group rm10">
+            <h6>DHU Value</h6>
+            <input type="text" className="form-control" placeholder="Enter DHU Value" 
+                name="dhu" value={this.state.dhu} defaultValue={this.state.smv} onChange={this.handleChange} />
           </div>
           <div className="form-group rm10" style={{width: 200}}>
             <h6>Choose Section</h6>

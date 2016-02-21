@@ -29,7 +29,8 @@ OperationBulletin = React.createClass({
     var data;
     e.preventDefault();
     data = {
-      style: ReactDOM.findDOMNode(this.refs.style).value
+      style: ReactDOM.findDOMNode(this.refs.style).value,      
+      takt_time: ReactDOM.findDOMNode(this.refs.takt_time).value
     };
     return $.ajax({
       method: 'PUT',
@@ -54,6 +55,7 @@ OperationBulletin = React.createClass({
       <tr>
         <td>{this.lineName()}</td>
         <td>{this.props.record.style}</td>
+        <td>{this.props.record.takt_time}</td>
         <td>
           <a className="btn btn-default btn-xs rm10" onClick={this.handleToggle} title="Edit">
             <span className="glyphicon glyphicon-pencil"></span>
@@ -74,6 +76,8 @@ OperationBulletin = React.createClass({
         <td>{this.lineName()}</td>
         <td><input className="form-control" type="text" name="style" 
               defaultValue={this.props.record.style} ref="style" /></td>
+        <td><input className="form-control" type="text" name="takt_time" 
+              defaultValue={this.props.record.takt_time} ref="takt_time" /></td>
         <td>
           <a className="btn btn-primary btn-xs rm10" onClick={this.handleEdit} title="Save">
             <span className="glyphicon glyphicon-ok"></span>
