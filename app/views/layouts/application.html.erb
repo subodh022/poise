@@ -7,10 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="head_nav"><%= react_component 'NavbarInstance' %></div>
+  <div id="head_nav"><%= react_component 'NavbarInstance', {user_signed_in: user_signed_in?, user: current_user} %></div>
   <div class="container">
-  	<div id="flash_messages"></div>
-    <%= yield %>
+    <div class="content">
+    	<div id="flash_messages"></div>
+      <%= yield %>
+    </div>
   </div>
   <footer class="footer text-center">
 	<div class="container">

@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -39,6 +39,10 @@ gem "bower-rails", "~> 0.10.0"
 gem 'browserify-rails', '~> 0.9.1'
 
 gem 'puma'
+
+# User accounts management
+gem 'devise'
+gem 'omniauth'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

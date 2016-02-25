@@ -47,11 +47,12 @@ LinesForm = React.createClass({
 						<input type="text" className='form-control' placeholder='Capacity' name='line[capacity]' defaultValue={this.state.capacity} />
 					</div>
 				</div>
-				<label className="col-xs-1">Sections</label>
-				<div className="clear" />
-				{this.state.sections.map(function(section, i){
-	      			return <LineSection data={section} key={section.id} />;
-			    })}
+				<label className="col-xs-2">Sections</label>
+				<div className="col-xs-10">
+					{this.state.sections.map(function(section, i){
+		      			return <LineSection data={section} key={section.id} serial={i+1} />;
+				    })}
+				</div>
 				<div className="clear" />
 				<div className="row">
 					<label className="col-xs-2"></label>

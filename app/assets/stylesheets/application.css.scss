@@ -63,7 +63,7 @@ td, th {
 	right:0;
 	margin-left:auto;
 	margin-right:auto;
-	width: 35%;
+	width: 30%;
 }
 
 .navbar-right {
@@ -85,6 +85,11 @@ td, th {
     top: 0;
     width: 100%;
     margin-bottom: 10px;
+}
+
+.navbar-text {
+    margin-bottom: 15px;
+    margin-top: 20px;
 }
 
 h3 {
@@ -115,6 +120,20 @@ tr.borderless, td.borderless {
   border-top: 1px solid #ccc;
   padding: 6px 0;
   margin-top: 50px;
+}
+
+.content {
+  min-height: 800px;
+}
+
+.login-box {
+  width: 350px; 
+  margin: 0 auto; 
+  text-align: left;
+}
+
+.section-box {
+  padding: 15px 5px;
 }
 
 $bgDefault      : #ffffff;

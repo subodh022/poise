@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :work_stations
   resources :operation_bulletins do
     member do
@@ -27,6 +28,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'lines#index'
+
+  get 'logout' => 'devise/sessions#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
