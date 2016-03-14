@@ -1,0 +1,2 @@
+class OpReworksController < ApplicationController
+end

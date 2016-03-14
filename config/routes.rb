@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :attendances
+  resources :hourly_outputs
+  resources :op_reworks
+  resources :machine_downtimes
   devise_for :users
   resources :work_stations
   resources :operation_bulletins do

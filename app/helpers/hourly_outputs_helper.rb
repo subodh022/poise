@@ -1,0 +1,2 @@
+module HourlyOutputsHelper
+end

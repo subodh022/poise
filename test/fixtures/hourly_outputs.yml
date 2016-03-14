@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  output: 1
+  logged_at: 2016-03-14 21:13:48
+  remarks: MyString
+
+two:
+  output: 1
+  logged_at: 2016-03-14 21:13:48
+  remarks: MyString

@@ -1,0 +1,2 @@
+class MachineDowntimesController < ApplicationController
+end
