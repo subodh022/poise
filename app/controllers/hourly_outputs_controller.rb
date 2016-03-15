@@ -1,2 +1,2 @@
-class HourlyOutputsController < ApplicationController
+class HourlyOutputsController < ApiController
 end

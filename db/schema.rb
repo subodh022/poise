@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225114615) do
+ActiveRecord::Schema.define(version: 20160314155139) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer  "work_station_id", limit: 4
+    t.boolean  "present",         limit: 1, default: true
+    t.datetime "logged_at"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "attendances", ["work_station_id"], name: "index_attendances_on_work_station_id", using: :btree
+
+  create_table "hourly_outputs", force: :cascade do |t|
+    t.integer  "work_station_id", limit: 4
+    t.integer  "output",          limit: 4
+    t.datetime "logged_at"
+    t.string   "remarks",         limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "hourly_outputs", ["work_station_id"], name: "index_hourly_outputs_on_work_station_id", using: :btree
 
   create_table "lines", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -19,6 +40,17 @@ ActiveRecord::Schema.define(version: 20160225114615) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
+
+  create_table "machine_downtimes", force: :cascade do |t|
+    t.integer  "work_station_id", limit: 4
+    t.integer  "downtime",        limit: 4
+    t.datetime "logged_at"
+    t.string   "remarks",         limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "machine_downtimes", ["work_station_id"], name: "index_machine_downtimes_on_work_station_id", using: :btree
 
   create_table "machines", force: :cascade do |t|
     t.integer  "line_id",    limit: 4
@@ -32,6 +64,17 @@ ActiveRecord::Schema.define(version: 20160225114615) do
   end
 
   add_index "machines", ["line_id"], name: "index_machines_on_line_id", using: :btree
+
+  create_table "op_reworks", force: :cascade do |t|
+    t.integer  "work_station_id", limit: 4
+    t.integer  "rework",          limit: 4
+    t.datetime "logged_at"
+    t.string   "remarks",         limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "op_reworks", ["work_station_id"], name: "index_op_reworks_on_work_station_id", using: :btree
 
   create_table "operation_bulletins", force: :cascade do |t|
     t.integer  "line_id",    limit: 4

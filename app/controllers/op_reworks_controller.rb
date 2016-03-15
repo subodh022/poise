@@ -1,2 +1,2 @@
-class OpReworksController < ApplicationController
+class OpReworksController < ApiController
 end

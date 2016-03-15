@@ -1,2 +1,2 @@
-class AttendancesController < ApplicationController
+class AttendancesController < ApiController
 end
