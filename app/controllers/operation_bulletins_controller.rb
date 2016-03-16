@@ -1,6 +1,6 @@
 class OperationBulletinsController < ApplicationController
 
-	before_action :authenticate_user!, except: [:get_work_stations]
+	before_action :authenticate_user!, except: [:get_work_stations, :get_ob_list]
 
 	def index
 		@records = OperationBulletin.all
@@ -55,6 +55,11 @@ class OperationBulletinsController < ApplicationController
 			.to_json(:methods => [:operation, :machine]))
 		@sections = GenerateOperationBulletin.generate(ob_sections, record.takt_time)
 		@machines = record.line.machines
+	end
+
+	def get_ob_list
+		results = OperationBulletin.select(:id, :line_id, :style)
+		render json: results
 	end
 
 	def get_work_stations

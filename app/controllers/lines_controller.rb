@@ -1,5 +1,7 @@
 class LinesController < ApplicationController
 
+	before_action :authenticate_user!, except: [:get_lines]
+
 	def index
 		@records = Line.all
 	end
@@ -12,6 +14,10 @@ class LinesController < ApplicationController
 	def get_sections
 		@sections = Line.find(params[:id]).sections
 		render json: @sections.to_json
+	end
+
+	def get_lines
+		render json: Line.select(:id, :title)
 	end
 
 	private
