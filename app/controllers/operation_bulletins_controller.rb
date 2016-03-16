@@ -1,5 +1,7 @@
 class OperationBulletinsController < ApplicationController
 
+	before_action :authenticate_user!, except: [:get_work_stations]
+
 	def index
 		@records = OperationBulletin.all
 		@lines = Line.all
@@ -53,6 +55,11 @@ class OperationBulletinsController < ApplicationController
 			.to_json(:methods => [:operation, :machine]))
 		@sections = GenerateOperationBulletin.generate(ob_sections, record.takt_time)
 		@machines = record.line.machines
+	end
+
+	def get_work_stations
+		results = WorkStation.where("operation_bulletin_id = ?", params[:id])
+		render json: results
 	end
 
 	private

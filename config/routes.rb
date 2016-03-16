@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       get "manage" => "operation_bulletins#manage"
       get "generate" => "operation_bulletins#generate"
+      get "get_work_stations" => "operation_bulletins#get_work_stations"
     end
   end
   resources :machines
