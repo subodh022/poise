@@ -58,7 +58,7 @@ class OperationBulletinsController < ApplicationController
 	end
 
 	def get_ob_list
-		results = OperationBulletin.select(:id, :line_id, :style)
+		results = OperationBulletin.select(:id, :line_id, :style).where("line_id = ?", params[:line_id])
 		render json: results
 	end
 
