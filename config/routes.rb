@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   end
 
   post "operators/update_skill" => "operators#update_skill"
+  get "get_lines" => "lines#get_lines"
+  get "get_ob_list" => "operation_bulletins#get_ob_list"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
