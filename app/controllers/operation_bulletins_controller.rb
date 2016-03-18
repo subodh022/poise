@@ -64,7 +64,7 @@ class OperationBulletinsController < ApplicationController
 
 	def get_work_stations
 		results = WorkStation.joins(:section, :operation, :machine)
-							 .select("work_stations.id, sections.name as section_name, operations.title as operation_name, machines.name as machine_name")
+							 .select("work_stations.id as ws_id, sections.name as section_name, operations.title as operation_name, machines.name as machine_name")
 							 .where("operation_bulletin_id = ?", params[:id])
 		render json: results
 	end
