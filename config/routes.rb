@@ -38,6 +38,12 @@ Rails.application.routes.draw do
 
   get 'logout' => 'devise/sessions#destroy'
 
+  namespace "api" do
+    namespace "v1" do
+      resources :work_stations
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

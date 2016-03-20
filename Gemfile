@@ -43,6 +43,7 @@ gem 'puma'
 # User accounts management
 gem 'devise'
 gem 'omniauth'
+gem 'rabl'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
