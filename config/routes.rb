@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   resources :attendances
-  resources :hourly_outputs
-  resources :op_reworks
-  resources :machine_downtimes
   devise_for :users
   resources :work_stations
   resources :operation_bulletins do
@@ -40,9 +37,14 @@ Rails.application.routes.draw do
 
   namespace "api" do
     namespace "v1" do
-      resources :work_stations
-      resources :lines
-      resources :operation_bulletins
+      resources :work_stations, only: [:index]
+      resources :lines, only: [:index]
+      resources :operation_bulletins, only: [:index]
+      resources :machine_downtimes, only: [:index, :create]
+      resources :op_reworks, only: [:index, :create]
+      resources :hourly_outputs, only: [:index, :create]
+      resources :attendances, only: [:index, :create]
+      get "working_hours" => "reports#working_hours"
     end
   end
 
