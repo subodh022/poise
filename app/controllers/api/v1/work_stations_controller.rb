@@ -1,7 +1,7 @@
 class Api::V1::WorkStationsController < ApiController
 
 	def index
-	  @work_stations = WorkStation.includes(:operation_bulletin, :section, :operation, :machine, :operator)
+	  @work_stations = WorkStation.includes(:operation_bulletin, :section, :operation, :machine, :operatorm, )
 
 	  respond_to do |format|
 	   format.json{ @work_stations.to_json }
