@@ -9,4 +9,11 @@ class Api::V1::WorkStationsController < ApiController
 	  end
 	end
 
+	def record_attendance
+		attendance = Attendance.find_or_create_by(work_station_id: params[:work_station_id], logged_at: params[:logged_at].to_datetime)
+		attendance.update_attributes(present: params[:present])
+
+		render json: {code: "201", message: "Success"}
+	end
+
 end

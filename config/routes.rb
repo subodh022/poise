@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       resources :hourly_outputs, only: [:index, :create]
       resources :attendances, only: [:index, :create]
       get "working_hours" => "reports#working_hours"
+      post "record_attendance" => "work_stations#record_attendance"
     end
   end
 

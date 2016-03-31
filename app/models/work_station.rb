@@ -5,6 +5,7 @@ class WorkStation < ActiveRecord::Base
 	belongs_to :machine
 	belongs_to :operator
 	belongs_to :section
+	has_many :attendances
 	has_many :machine_downtimes
 
 	def self.stations(ob_id, section_id)
@@ -29,5 +30,10 @@ class WorkStation < ActiveRecord::Base
 
 	def operator_name
 		operator.blank? ? "NA" : operator.name
+	end
+
+	def attendance_today
+		attendance = Attendance.where(work_station_id: id, logged_at: Date.today.to_datetime)
+		attendance.blank? ? "false" : attendance.first.present
 	end
 end
