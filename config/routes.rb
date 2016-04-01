@@ -46,6 +46,10 @@ Rails.application.routes.draw do
       resources :attendances, only: [:index, :create]
       get "working_hours" => "reports#working_hours"
       post "record_attendance" => "work_stations#record_attendance"
+
+      namespace "reports" do
+        get "downtime"
+      end
     end
   end
 
