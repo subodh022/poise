@@ -8,11 +8,16 @@ module GenerateOperationBulletin
 			ws_list.each do |ws|
 				ws['operators'] = []
 				op_count = operator_count(ws['operation']['smv'], takt_time)
+				ws_operators = []
 				op_count.times do
 				 	operator = assign_operators(ws['operation']['id'], operators)
-				 	ws['operators'] << {'operator_skill': operator['skill_value'], 'operator_name': operator['emp_name'] + " (#{operator['emp_id']})"} if operator
-				 	operators.delete_if {|op| op['id'] == operator['id'] } if operator
+				 	if operator
+				 		ws['operators'] << {'operator_id': operator['id'], 'operator_skill': operator['skill_value'], 'operator_name': operator['emp_name'] + " (#{operator['emp_id']})"} 
+				 		ws_operators << operator['id']
+				 		operators.delete_if {|op| op['id'] == operator['id'] }				 		
+				 	end
 				end
+				update_operators(ws['id'], ws_operators)
 			end
 			section['workstations'] = ws_list.sort_by {|k| k['id']}
 		end
@@ -41,7 +46,7 @@ module GenerateOperationBulletin
 			operator = specialized_operator[:operator]
 			operator['skill_value'] = specialized_operator[:skill_value]
 		elsif !filtered_operators.blank?
-			# If there are multiple oeprators, pick with highesh skill value
+			# If there are multiple operators, pick with highesh skill value
 			operator = filtered_operators.first[:operator]
 			operator['skill_value'] = filtered_operators.first[:skill_value]				
 		end
@@ -63,6 +68,13 @@ module GenerateOperationBulletin
 			end
 		end
 		count
+	end
+
+	def self.update_operators(ws_id, ws_operators)
+		ws = WorkStation.includes(:operators).find(ws_id)
+		ws_operators.each do |op|
+			ws.operators << Operator.find(op) unless ws.operators.where(id: op).exists?
+		end
 	end
 
 end

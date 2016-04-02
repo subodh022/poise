@@ -3,10 +3,13 @@ class WorkStation < ActiveRecord::Base
 	belongs_to :operation_bulletin
 	belongs_to :operation
 	belongs_to :machine
-	belongs_to :operator
 	belongs_to :section
 	has_many :attendances
 	has_many :machine_downtimes
+	has_many :op_reworks
+	has_many :hourly_outputs
+	has_many :workstation_operators
+	has_many :operators, :through => :workstation_operators
 
 	def self.stations(ob_id, section_id)
 		where("operation_bulletin_id = ? and section_id = ?", ob_id, section_id)
@@ -29,7 +32,7 @@ class WorkStation < ActiveRecord::Base
 	end
 
 	def operator_name
-		operator.blank? ? "NA" : operator.name
+		operators.blank? ? "NA" : operators.map{|op| op['emp_name'] + " (#{op['emp_id']})"}.join(', ')
 	end
 
 	def attendance_today

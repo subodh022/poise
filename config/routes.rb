@@ -49,6 +49,8 @@ Rails.application.routes.draw do
 
       namespace "reports" do
         get "downtime"
+        get "rework"
+        get "output"
       end
     end
   end

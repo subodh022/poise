@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314155139) do
+ActiveRecord::Schema.define(version: 20160402034044) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer  "work_station_id", limit: 4
@@ -151,7 +151,6 @@ ActiveRecord::Schema.define(version: 20160314155139) do
     t.integer  "section_id",            limit: 4
     t.integer  "operation_id",          limit: 4
     t.integer  "machine_id",            limit: 4
-    t.integer  "operator_id",           limit: 4
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
@@ -159,7 +158,16 @@ ActiveRecord::Schema.define(version: 20160314155139) do
   add_index "work_stations", ["machine_id"], name: "index_work_stations_on_machine_id", using: :btree
   add_index "work_stations", ["operation_bulletin_id"], name: "index_work_stations_on_operation_bulletin_id", using: :btree
   add_index "work_stations", ["operation_id"], name: "index_work_stations_on_operation_id", using: :btree
-  add_index "work_stations", ["operator_id"], name: "index_work_stations_on_operator_id", using: :btree
   add_index "work_stations", ["section_id"], name: "index_work_stations_on_section_id", using: :btree
+
+  create_table "workstation_operators", force: :cascade do |t|
+    t.integer  "work_station_id", limit: 4
+    t.integer  "operator_id",     limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "workstation_operators", ["operator_id"], name: "index_workstation_operators_on_operator_id", using: :btree
+  add_index "workstation_operators", ["work_station_id"], name: "index_workstation_operators_on_work_station_id", using: :btree
 
 end

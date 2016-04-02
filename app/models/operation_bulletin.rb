@@ -18,4 +18,20 @@ class OperationBulletin < ActiveRecord::Base
 				.group("work_stations.id")
 				.includes(:operation)
 	end
+
+	def rework_for_day(report_date)
+		work_stations.joins(:op_reworks)
+				.where("DATE(logged_at) = ?", report_date)
+				.select("work_stations.*, sum(rework) as tot_rework")
+				.group("work_stations.id")
+				.includes(:operation)
+	end
+
+	def output_for_day(report_date)
+		work_stations.joins(:hourly_outputs)
+				.where("DATE(logged_at) = ?", report_date)
+				.select("work_stations.*, sum(output) as tot_output")
+				.group("work_stations.id")
+				.includes(:operation)
+	end
 end
