@@ -36,10 +36,9 @@ class OperationBulletin < ActiveRecord::Base
 	end
 
 	def attendance_for_week(report_date)
-		work_stations.joins(:hourly_outputs)
+		work_stations.joins(:attendances)
 				.where("DATE(logged_at) >= ?", (report_date - 1.week) )
 				.select("logged_at, sum(present) as tot_attendance")
 				.group("logged_at")
-				.includes(:operation)
 	end
 end

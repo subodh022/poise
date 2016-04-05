@@ -51,6 +51,7 @@ Rails.application.routes.draw do
         get "downtime"
         get "rework"
         get "output"
+        get "attendance"
       end
     end
   end
