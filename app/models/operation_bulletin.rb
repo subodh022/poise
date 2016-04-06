@@ -35,6 +35,15 @@ class OperationBulletin < ActiveRecord::Base
 				.includes(:operation)
 	end
 
+	def section_output_for_day(report_date)
+		work_stations.joins(:hourly_outputs)
+				.where("DATE(logged_at) = ?", report_date)
+				.where("work_stations.id IN (SELECT max(id) FROM work_stations GROUP BY section_id)")
+				.select("work_stations.*, sum(output) as tot_output, avg(output) as avg_output")
+				.group("work_stations.id")
+				.includes(:section)
+	end
+
 	def attendance_for_week(report_date)
 		work_stations.joins(:attendances)
 				.where("DATE(logged_at) >= ?", (report_date - 1.week) )

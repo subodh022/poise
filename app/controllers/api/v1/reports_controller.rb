@@ -22,6 +22,12 @@ class Api::V1::ReportsController < ApiController
 	  @report_data = [ob.output_for_day(report_date)]
 	end
 
+	def section_output
+	  report_date = params[:report_date].to_date || Date.today
+	  ob = OperationBulletin.find(params[:ob_id])
+	  @report_data = [ob.section_output_for_day(report_date)]
+	end
+
 	def attendance
 	  report_date = params[:report_date].to_date || Date.today
 	  ob = OperationBulletin.find(params[:ob_id])
