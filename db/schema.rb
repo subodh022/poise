@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402034044) do
+ActiveRecord::Schema.define(version: 20160407130608) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer  "work_station_id", limit: 4
@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(version: 20160402034044) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
+
+  create_table "machine_deviations", force: :cascade do |t|
+    t.integer  "old_ws_id",  limit: 4
+    t.integer  "new_ws_id",  limit: 4
+    t.integer  "machine_id", limit: 4
+    t.integer  "dev_time",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "machine_deviations", ["machine_id"], name: "index_machine_deviations_on_machine_id", using: :btree
 
   create_table "machine_downtimes", force: :cascade do |t|
     t.integer  "work_station_id", limit: 4
@@ -94,6 +105,17 @@ ActiveRecord::Schema.define(version: 20160402034044) do
     t.string   "section_name", limit: 255
     t.float    "dhu",          limit: 24,  default: 0.0
   end
+
+  create_table "operator_deviations", force: :cascade do |t|
+    t.integer  "old_ws_id",   limit: 4
+    t.integer  "new_ws_id",   limit: 4
+    t.integer  "operator_id", limit: 4
+    t.integer  "dev_time",    limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "operator_deviations", ["operator_id"], name: "index_operator_deviations_on_operator_id", using: :btree
 
   create_table "operators", force: :cascade do |t|
     t.integer  "line_id",    limit: 4

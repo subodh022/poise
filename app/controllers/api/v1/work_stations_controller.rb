@@ -11,6 +11,13 @@ class Api::V1::WorkStationsController < ApiController
 	  end
 	end
 
+	def ws_list
+		@work_stations = WorkStation.includes(:operation_bulletin, :section, :operation, :machine, :operators)
+							.includes(:last_three_outputs, :attendances)
+	  						.where("operation_bulletin_id = ?", params[:operation_bulletin_id])
+	  						.order("id")
+	end
+
 	def record_attendance
 		attendance = Attendance.find_or_create_by(work_station_id: params[:work_station_id], logged_at: params[:logged_at].to_datetime)
 		attendance.update_attributes(present: params[:present])

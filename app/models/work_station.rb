@@ -8,6 +8,7 @@ class WorkStation < ActiveRecord::Base
 	has_many :machine_downtimes
 	has_many :op_reworks
 	has_many :hourly_outputs
+	has_many :last_three_outputs, -> { order("created_at DESC").limit(3) }, :class_name => "HourlyOutput"
 	has_many :workstation_operators
 	has_many :operators, :through => :workstation_operators
 

@@ -54,6 +54,10 @@ Rails.application.routes.draw do
         get "section_output"
         get "attendance"
       end
+
+      namespace "dynamic_balancing" do
+        get "ws_list"
+      end
     end
   end
 

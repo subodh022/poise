@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  old_ws_id: 1
+  new_ws_id: 1
+  machine_id: 1
+  dev_time: 1
+
+two:
+  old_ws_id: 1
+  new_ws_id: 1
+  machine_id: 1
+  dev_time: 1
