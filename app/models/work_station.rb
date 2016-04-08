@@ -7,10 +7,16 @@ class WorkStation < ActiveRecord::Base
 	has_many :attendances
 	has_many :machine_downtimes
 	has_many :op_reworks
-	has_many :hourly_outputs
-	has_many :last_three_outputs, -> { order("created_at DESC").limit(3) }, :class_name => "HourlyOutput"
+	has_many :hourly_outputs, -> { order("created_at DESC") } do
+		def recent(n=3)
+			limit(n)
+		end
+	end
 	has_many :workstation_operators
 	has_many :operators, :through => :workstation_operators
+
+	has_one :attendance_today, -> { where(logged_at: Date.today.to_datetime) }, :class_name => "Attendance"
+	
 
 	def self.stations(ob_id, section_id)
 		where("operation_bulletin_id = ? and section_id = ?", ob_id, section_id)
@@ -36,8 +42,7 @@ class WorkStation < ActiveRecord::Base
 		operators.blank? ? "NA" : operators.map{|op| op['emp_name'] + " (#{op['emp_id']})"}.join(', ')
 	end
 
-	def attendance_today
-		attendance = Attendance.where(work_station_id: id, logged_at: Date.today.to_datetime)
-		attendance.blank? ? "false" : attendance.first.present
+	def recent_outputs
+		hourly_outputs.select("id, work_station_id, output, logged_at, remarks").recent
 	end
 end

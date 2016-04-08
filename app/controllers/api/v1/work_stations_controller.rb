@@ -2,20 +2,9 @@ class Api::V1::WorkStationsController < ApiController
 
 	def index
 	  @work_stations = WorkStation.includes(:operation_bulletin, :section, :operation, :machine, :operators)
+	  						.includes(:attendance_today)
 	  						.where("operation_bulletin_id = ?", params[:operation_bulletin_id])
-	  						.order("id")
-
-	  respond_to do |format|
-	   format.json{ @work_stations.to_json }
-	   format.xml{}
-	  end
-	end
-
-	def ws_list
-		@work_stations = WorkStation.includes(:operation_bulletin, :section, :operation, :machine, :operators)
-							.includes(:last_three_outputs, :attendances)
-	  						.where("operation_bulletin_id = ?", params[:operation_bulletin_id])
-	  						.order("id")
+	  						.order("section_id, id")
 	end
 
 	def record_attendance
