@@ -14,4 +14,13 @@ class Api::V1::DynamicBalancingController < ApiController
 		@avl_devaitions = @ws.avl_deviations
 	end
 
+	def create_deviation
+		@od = OperatorDeviation.new(old_ws_id: params[:old_ws_id], new_ws_id: params[:new_ws_id], dev_time: 60)
+		if @od.save
+			render json: @od.to_json
+		else
+			render json: @od.errors, status: :unprocessable_entity
+		end
+	end
+
 end

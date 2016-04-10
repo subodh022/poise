@@ -60,6 +60,7 @@ Rails.application.routes.draw do
       namespace "dynamic_balancing" do
         get "ws_list"
         get "ws_details"
+        post "create_deviation"
       end
 
       get "working_hours" => "reports#working_hours"

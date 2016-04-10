@@ -56,7 +56,7 @@ class WorkStation < ActiveRecord::Base
 	end
 
 	def avl_deviations
-		WorkStation.includes(:operators => :skills).where("operation_bulletin_id = ? and section_id = ? and id < ?", operation_bulletin_id, section_id, id).order('id desc').limit(3) | WorkStation.includes(:operators => :skills).where("operation_bulletin_id = ? and section_id = ? and id > ?", operation_bulletin_id, section_id, id).order('id').limit(3)
+		WorkStation.includes(:operators => :skills).select("work_stations.*, 'Up' as direction").where("operation_bulletin_id = ? and section_id = ? and id < ?", operation_bulletin_id, section_id, id).order('id desc').limit(3) | WorkStation.includes(:operators => :skills).select("work_stations.*, 'Down' as direction").where("operation_bulletin_id = ? and section_id = ? and id > ?", operation_bulletin_id, section_id, id).order('id').limit(3)
 	end
 
 	def attendance_for_today
