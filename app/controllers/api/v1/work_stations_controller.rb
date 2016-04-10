@@ -14,4 +14,16 @@ class Api::V1::WorkStationsController < ApiController
 		render json: {code: "201", message: "Success"}
 	end
 
+	def downtime
+	  @downtime = MachineDowntime.where(work_station_id: params[:work_station_id], logged_at: params[:logged_at])
+	end
+
+	def rework
+	  @rework = OpRework.where(work_station_id: params[:work_station_id], logged_at: params[:logged_at])
+	end
+
+	def output
+	  @output = HourlyOutput.where(work_station_id: params[:work_station_id], logged_at: params[:logged_at])
+	end
+
 end

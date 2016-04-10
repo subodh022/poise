@@ -29,7 +29,7 @@ class Api::V1::ReportsController < ApiController
 	end
 
 	def attendance
-	  report_date = params[:report_date].to_date || Date.today
+	  report_date = Date.today
 	  ob = OperationBulletin.find(params[:ob_id])
 	  @report_data = [ob.attendance_for_week(report_date)]
 	end

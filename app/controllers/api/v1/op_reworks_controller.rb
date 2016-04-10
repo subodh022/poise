@@ -10,13 +10,22 @@ class Api::V1::OpReworksController < ApiController
 	end
 
 	def create
-		@or = OpRework.new(rework_params)
-
-		if @or.save
-			render json: @or.to_json
+		result = OpRework.where(work_station_id: params[:work_station_id], logged_at: params[:logged_at])
+		if result.blank?
+			@or = OpRework.new(rework_params)
+			if @or.save
+				render json: @or.to_json
+				return
+			end
 		else
-			render json: @or.errors, status: :unprocessable_entity
+			@or = result.first
+			if @or.update(rework_params)
+				render json: @or.to_json
+				return
+			end
 		end
+
+		render json: @or.errors, status: :unprocessable_entity
 	end
 
 	private

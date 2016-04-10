@@ -75,6 +75,9 @@ module GenerateOperationBulletin
 		ws_operators.each do |op|
 			ws.operators << Operator.find(op) unless ws.operators.where(id: op).exists?
 		end
+		ws.operators.each do |op|
+			WorkstationOperator.where(work_station_id: ws_id, operator_id: op.id).first.delete unless ws_operators.include? op.id
+		end
 	end
 
 end

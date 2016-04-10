@@ -10,13 +10,22 @@ class Api::V1::HourlyOutputsController < ApiController
 	end
 
 	def create
-		@ho = HourlyOutput.new(output_params)
-
-		if @ho.save
-			render json: @ho.to_json
+		result = HourlyOutput.where(work_station_id: params[:work_station_id], logged_at: params[:logged_at])
+		if result.blank?
+			@output = HourlyOutput.new(output_params)
+			if @output.save
+				render json: @output.to_json
+				return
+			end
 		else
-			render json: @ho.errors, status: :unprocessable_entity
+			@output = result.first
+			if @output.update(output_params)
+				render json: @output.to_json
+				return
+			end
 		end
+
+		render json: @output.errors, status: :unprocessable_entity
 	end
 
 	private

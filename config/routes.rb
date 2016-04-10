@@ -37,15 +37,17 @@ Rails.application.routes.draw do
 
   namespace "api" do
     namespace "v1" do
-      resources :work_stations, only: [:index]
+      resources :work_stations, only: [:index] do
+        get "downtime"
+        get "rework"
+        get "output"
+      end
       resources :lines, only: [:index]
       resources :operation_bulletins, only: [:index]
       resources :machine_downtimes, only: [:index, :create]
       resources :op_reworks, only: [:index, :create]
       resources :hourly_outputs, only: [:index, :create]
       resources :attendances, only: [:index, :create]
-      get "working_hours" => "reports#working_hours"
-      post "record_attendance" => "work_stations#record_attendance"
 
       namespace "reports" do
         get "downtime"
@@ -57,7 +59,11 @@ Rails.application.routes.draw do
 
       namespace "dynamic_balancing" do
         get "ws_list"
+        get "ws_details"
       end
+
+      get "working_hours" => "reports#working_hours"
+      post "record_attendance" => "work_stations#record_attendance"
     end
   end
 

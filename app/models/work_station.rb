@@ -42,7 +42,24 @@ class WorkStation < ActiveRecord::Base
 		operators.blank? ? "NA" : operators.map{|op| op['emp_name'] + " (#{op['emp_id']})"}.join(', ')
 	end
 
+	def operator_with_skills(operation_id)
+		operators.blank? ? "NA" : operators.map{|op| op.name_with_skill(operation_id).merge({name_class: (attendance_for_today ? "green-item" : "red-item")}) }
+	end
+
 	def recent_outputs
-		hourly_outputs.select("id, work_station_id, output, logged_at, remarks").recent
+		hourly_outputs.recent
+	end
+
+	def most_recent_output
+		op = hourly_outputs.recent(1)
+		op.blank? ? "NA" : op.first.output
+	end
+
+	def avl_deviations
+		WorkStation.includes(:operators => :skills).where("operation_bulletin_id = ? and section_id = ? and id < ?", operation_bulletin_id, section_id, id).order('id desc').limit(3) | WorkStation.includes(:operators => :skills).where("operation_bulletin_id = ? and section_id = ? and id > ?", operation_bulletin_id, section_id, id).order('id').limit(3)
+	end
+
+	def attendance_for_today
+		attendance_today.blank? ? false : ws.attendance_today.present
 	end
 end

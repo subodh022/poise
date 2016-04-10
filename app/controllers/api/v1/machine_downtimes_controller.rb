@@ -10,13 +10,22 @@ class Api::V1::MachineDowntimesController < ApiController
 	end
 
 	def create
-		@md = MachineDowntime.new(machine_downtime_params)
-
-		if @md.save
-			render json: @md.to_json
+		result = MachineDowntime.where(work_station_id: params[:work_station_id], logged_at: params[:logged_at])
+		if result.blank?
+			@md = MachineDowntime.new(machine_downtime_params)
+			if @md.save
+				render json: @md.to_json
+				return
+			end
 		else
-			render json: @md.errors, status: :unprocessable_entity
+			@md = result.first
+			if @md.update(machine_downtime_params)
+				render json: @md.to_json
+				return
+			end
 		end
+
+		render json: @md.errors, status: :unprocessable_entity
 	end
 
 	private

@@ -27,4 +27,15 @@ class Operator < ActiveRecord::Base
 	def section_name
 		section.name
 	end
+
+	def name_with_skill(operation_id)
+		skill = operation_skill(operation_id)
+		# "<div>"+emp_name + " ( ID: #{emp_id}," + " Skill: " + operation_skill(operation_id) +" )</div>"
+		{name: emp_name, skill: "#{skill*10}%", skill_class: (skill < 5 ? "red-item" : "green-item")}
+	end
+
+	def operation_skill(operation_id)
+		skill = skills.where(operation_id: operation_id).first
+		skill.blank? ? 0 : skill.value
+	end
 end
