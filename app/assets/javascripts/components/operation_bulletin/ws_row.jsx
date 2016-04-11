@@ -61,6 +61,7 @@ const WSRow = React.createClass({
         <td>{this.props.serial}</td>
         <td>{this.props.record.operation.title}</td>
         <td>{this.props.record.operation.smv}</td>
+        <td>{this.props.record.operator}</td>
         <td>{this.props.record.machine.name}</td>
         <td>{(this.props.record.machine.attachment == "") ? <i className="text-muted">None</i> : this.props.record.machine.attachment}</td>
         <td>{this.props.record.machine.tot_units - this.props.record.machine.used_units}</td>
@@ -92,6 +93,7 @@ const WSRow = React.createClass({
           </div>
         </td>
         <td>{this.props.record.operation.smv}</td>
+        <td>{this.props.record.operator}</td>
         <td width="180px">
           <div>
             <Select

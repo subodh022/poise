@@ -12,7 +12,7 @@ module GenerateOperationBulletin
 				op_count.times do
 				 	operator = assign_operators(ws['operation']['id'], operators)
 				 	if operator
-				 		ws['operators'] << {'operator_id': operator['id'], 'operator_skill': operator['skill_value'], 'operator_name': operator['emp_name'] + " (#{operator['emp_id']})"} 
+				 		ws['operators'] << {'operator_id' => operator['id'], 'operator_skill' => operator['skill_value'], 'operator_name' => operator['emp_name'] + " (#{operator['emp_id']})"} 
 				 		ws_operators << operator['id']
 				 		operators.delete_if {|op| op['id'] == operator['id'] }				 		
 				 	end

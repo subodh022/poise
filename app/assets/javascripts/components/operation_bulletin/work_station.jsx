@@ -53,6 +53,7 @@ const WorkStation = React.createClass({
               <th>S. No.</th>
               <th>Operation</th>
               <th>SMV Value</th>
+              <th>Operator</th>
               <th>Machine</th>
               <th>Attachment</th>
               <th>Avaialble Units</th>
