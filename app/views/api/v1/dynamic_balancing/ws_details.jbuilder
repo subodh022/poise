@@ -12,6 +12,8 @@ json.options do
 		json.direction ad.direction
 		json.operation ad.operation_name
 		json.operator ad.operator_with_skills(ad.operation_id)
-		json.output ad.most_recent_output
+		json.output ad.recent_outputs do |op|
+			json.value op.output
+		end
 	end
 end
