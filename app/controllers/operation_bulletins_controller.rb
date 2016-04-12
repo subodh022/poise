@@ -36,8 +36,13 @@ class OperationBulletinsController < ApplicationController
 		record = OperationBulletin.find(params[:id])
 		@ob = record.to_json(:methods => :line_name)
 		@sections = record.line.enabled_sections
-			.collect {|r| r.attributes.merge({:workstations => WorkStation.stations(record.id, r.id), :operations => r.get_operations}) }
-			.to_json(:methods => [:operation, :machine])
+			.collect {|r| r.attributes.merge(
+				{
+					:workstations => WorkStation.stations(record.id, r.id), 
+					:operations => r.get_operations
+				}
+			)}
+			.to_json(:methods => [:operation, :machine, :operator_name, :operators])
 		@machines = record.line.machines
 	end
 
