@@ -75,7 +75,7 @@ class WorkStation < ActiveRecord::Base
 		status = {state: "green", message: []}
 		
 		unless attendance_for_today
-			status[:state] = "red"
+			status[:state] = "blue"
 			status[:message] << "Operator not present"
 		else
 			status[:state] = "green"
@@ -84,13 +84,13 @@ class WorkStation < ActiveRecord::Base
 
 		output = most_recent_output
 		if output == "NA" or output < 50
-			status[:state] = "red"
+			status[:state] = "red" if status[:state] == "green"
 			status[:message] << "Output below par"
 		elsif output >=50 and output < 60
-			status[:state] = "orange" if status[:state] != "red"
+			status[:state] = "orange" if status[:state] == "green"
 			status[:message] << "Output in critical zone"
 		else
-			status[:state] = "green" if status[:state] != "red"
+			status[:state] = "green" if status[:state] != "blue"
 			status[:message] << "Output normal"
 		end
 

@@ -43,6 +43,7 @@ Rails.application.routes.draw do
         get "output"
       end
       resources :lines, only: [:index]
+      resources :sections, only: [:index]
       resources :operation_bulletins, only: [:index]
       resources :machine_downtimes, only: [:index, :create]
       resources :op_reworks, only: [:index, :create]
