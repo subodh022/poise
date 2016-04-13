@@ -5,6 +5,13 @@ OBManagement = React.createClass({
       sections: this.props.sections
     };
   },
+  confirmGenerate: function(){
+    return function(e) {
+        e.preventDefault();
+        confirm = confirm('This will override your manual allocation of operators, if any. Do you want to proceed to generate fresh bulletin?');
+        return confirm;
+    }.bind(this);
+  },
   render: function() {
     return (
       <div>
@@ -14,8 +21,8 @@ OBManagement = React.createClass({
           </a>
         </div>
         <div className="pull-right rm10" style={{marginTop: '20px'}}>
-          <a className="btn btn-primary btn-sm" title="Generate Bulletin" href={"/operation_bulletins/" + this.state.record.id + "/generate"}>
-            <span className="glyphicon glyphicon-list-alt"></span> &nbsp;Generate Final Bulletin
+          <a className="btn btn-primary btn-sm" onClick={this.confirmGenerate} title="Generate Bulletin" id="generateOB" href={"/operation_bulletins/" + this.state.record.id + "/generate"} >
+            <span className="glyphicon glyphicon-list-alt"></span> &nbsp;Generated Final Bulletin
           </a>
         </div>
         <div className="clear"></div>
@@ -48,7 +55,7 @@ OBManagement = React.createClass({
                   <Tab eventKey={i} title={section.name}>
                     <div className="form-group"></div>
                     <WorkStation records={section.workstations} operations={section.operations} 
-                      machines={this.props.machines} ob_id={this.state.record.id} section_id={section.id} 
+                      machines={this.props.machines} operators={section.operators} ob_id={this.state.record.id} section_id={section.id} 
                       key={section.id} />
                   </Tab>
                 );

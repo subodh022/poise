@@ -4,7 +4,7 @@ class WorkStationsController < ApplicationController
 		@ws = WorkStation.new(ws_params)
 
 		if @ws.save
-			render json: @ws.to_json(:methods => [:operation, :machine])
+			render json: @ws.to_json(:methods => [:operation, :machine, :operator_name, :operators])
 		else
 			render json: @ws.errors, status: :unprocessable_entity
 		end
@@ -12,8 +12,11 @@ class WorkStationsController < ApplicationController
 
 	def update
 		@ws = WorkStation.find(params[:id])
+		operators = params[:work_station][:operator_ids] || []
+		operators.map! {|op| op.to_i }
 		if @ws.update(ws_params)
-		  render json: @ws.to_json(:methods => [:operation, :machine])
+		  GenerateOperationBulletin.update_operators(@ws.id, operators)
+		  render json: @ws.to_json(:methods => [:operation, :machine, :operator_name, :operators])
 		else
 		  render json: @ws.errors, status: :unprocessable_entity
 		end

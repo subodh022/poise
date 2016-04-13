@@ -3,13 +3,17 @@ const WorkStation = React.createClass({
     operations = jQuery.map( this.props.operations, function( a ) {
       return { value: a.id, label: a.title };
     });
+    operators = jQuery.map( this.props.operators, function( a ) {
+      return { value: a.id, label: a.emp_name, skills: a.skills };
+    });
     machines = jQuery.map( this.props.machines, function( a ) {
       return { value: a.id, label: a.name };
     });
     return {
       records: this.props.records,
       operations: operations,
-      machines: machines
+      machines: machines,
+      operators: operators
     };
   },
   addRecord: function(record) {
@@ -62,7 +66,7 @@ const WorkStation = React.createClass({
           </thead>
           <tbody>
             {this.state.records.map(function(record, i){
-              return <WSRow operations={this.state.operations} machines={this.state.machines} 
+              return <WSRow operations={this.state.operations} operators={this.state.operators} machines={this.state.machines} 
                         section_id={this.props.section_id} handleDeleteRecord={this.deleteRecord} 
                         record={record} key={record.id} handleEditRecord={this.updateRecord} serial={i+1} />;
             }.bind(this))}

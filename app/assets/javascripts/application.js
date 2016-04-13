@@ -38,4 +38,11 @@ var Panel = ReactBootstrap.Panel;
 var Well = ReactBootstrap.Well;
 
 $(function() {
+	$("#generateOB").on('click', function() {
+	  if (!confirm('This will override your manual allocation of operators, if any. Do you want to proceed to generate fresh bulletin?')) {
+	  	e.preventDefault();
+	  	return false;
+	  }
+	  return true;
+	});
 });

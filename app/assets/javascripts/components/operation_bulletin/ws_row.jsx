@@ -1,11 +1,13 @@
 const WSRow = React.createClass({
   getInitialState: function() {
-    operation_id = (this.props.operations.length > 0) ? this.props.operations[0].value : 0
-    machine_id = (this.props.machines.length > 0) ? this.props.machines[0].value : 0
+    operation_id = (this.props.operations.length > 0) ? (this.props.record.operation.id != undefined ? this.props.record.operation.id : this.props.operations[0].value) : 0
+    operator_ids = (this.props.record.operators.length > 0) ? jQuery.map(this.props.record.operators, function(op){ return op.id; }) : [0]
+    machine_id = (this.props.machines.length > 0) ? (this.props.record.machine.id != undefined ? this.props.record.machine.id : this.props.machines[0].value) : 0
     return {
       edit: false,
       section_id: this.props.section_id,
       operation_id: operation_id,
+      operator_ids: operator_ids,
       machine_id: machine_id
     };
   },
@@ -15,8 +17,30 @@ const WSRow = React.createClass({
       edit: !this.state.edit
     });
   },
+  getOperatorOptions: function(operators, i) {
+    var operation_id = this.props.record.operation.id;
+    var result = jQuery.map(operators, function(op){
+      var new_op = {};
+      new_op["index"] = i;
+      new_op["value"] = op["value"];
+      new_op["skill"] = " (Skill: --)";
+      jQuery.each(op["skills"], function(i, skill){
+        if(skill["operation_id"] == operation_id) {
+          new_op["skill"] = " (Skill: " + skill["value"]*10 + "%)";
+        }
+      });
+      new_op["label"] = op["label"] + new_op["skill"];
+      return new_op;
+    });
+    return result;
+  },
   handleOperationChange: function(v){
     this.setState({operation_id: v.value});
+  },
+  handleOperatorChange: function(v){
+    operator_ids = this.state.operator_ids;
+    operator_ids[v.index] = v.value;
+    this.setState({operator_ids: operator_ids});
   },
   handleMachineChange: function(v){
     this.setState({machine_id: v.value});
@@ -38,7 +62,8 @@ const WSRow = React.createClass({
     data = {
       section_id: this.state.section_id,
       operation_id: this.state.operation_id,
-      machine_id: this.state.machine_id
+      machine_id: this.state.machine_id,
+      operator_ids: this.state.operator_ids
     };
     return $.ajax({
       method: 'PUT',
@@ -93,7 +118,22 @@ const WSRow = React.createClass({
           </div>
         </td>
         <td>{this.props.record.operation.smv}</td>
-        <td>{this.props.record.operator_name}</td>
+        <td>
+          {this.state.operator_ids.map(function(op_id, i){
+              return (
+                <div>
+                  <Select
+                    name={"operator_id"}
+                    ref="operator_id"
+                    value={op_id}
+                    options={this.getOperatorOptions(this.props.operators, i)}
+                    onChange={this.handleOperatorChange}
+                    clearable={false}
+                  />
+                </div>
+              );
+          }.bind(this))}
+        </td>
         <td width="180px">
           <div>
             <Select

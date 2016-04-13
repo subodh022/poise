@@ -39,7 +39,8 @@ class OperationBulletinsController < ApplicationController
 			.collect {|r| r.attributes.merge(
 				{
 					:workstations => WorkStation.stations(record.id, r.id), 
-					:operations => r.get_operations
+					:operations => r.get_operations,
+					:operators => JSON.parse(Operator.includes(:skills).where('section_id = ?', r.id).to_json(:methods => :skills))
 				}
 			)}
 			.to_json(:methods => [:operation, :machine, :operator_name, :operators])
