@@ -38,7 +38,7 @@ class OperationBulletin < ActiveRecord::Base
 	def section_output_for_day(report_date)
 		work_stations.joins(:hourly_outputs)
 				.where("DATE(logged_at) = ?", report_date)
-				.where("work_stations.id IN (SELECT max(id) FROM work_stations GROUP BY section_id)")
+				.where("work_stations.id IN (SELECT max(id) FROM work_stations WHERE operation_bulletin_id = #{id} GROUP BY section_id)")
 				.select("work_stations.*, sum(output) as tot_output, avg(output) as avg_output")
 				.group("work_stations.id")
 				.includes(:section)
