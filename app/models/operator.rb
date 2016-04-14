@@ -33,7 +33,7 @@ class Operator < ActiveRecord::Base
 	def name_with_skill(operation_id)
 		skill = operation_skill(operation_id)
 		# "<div>"+emp_name + " ( ID: #{emp_id}," + " Skill: " + operation_skill(operation_id) +" )</div>"
-		{name: emp_name, skill: "#{skill*10}%", skill_class: (skill < 5 ? "red-item" : "green-item")}
+		{id: id, emp_id: emp_id, name: emp_name, skill: "#{skill*10}%", skill_class: (skill < 5 ? "red-item" : "green-item")}
 	end
 
 	def operation_skill(operation_id)

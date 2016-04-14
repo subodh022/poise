@@ -8,7 +8,7 @@ class WorkStation < ActiveRecord::Base
 	has_many :machine_downtimes
 	has_many :op_reworks
 	has_many :hourly_outputs, -> { order("created_at DESC") } do
-		def recent(n=3)
+		def recent(n=8)
 			limit(n)
 		end
 	end
