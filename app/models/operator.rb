@@ -4,6 +4,8 @@ class Operator < ActiveRecord::Base
 	belongs_to :section
 	has_many :skills
 
+	belongs_to :workstation_operator
+
 	def create_skills
 		ActiveRecord::Base.transaction do
 			Operation.where("section_name = ?", section_name).each do |op|

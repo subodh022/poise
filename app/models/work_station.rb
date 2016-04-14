@@ -14,6 +14,7 @@ class WorkStation < ActiveRecord::Base
 	end
 	has_many :workstation_operators
 	has_many :operators, :through => :workstation_operators
+	# has_many :attendances_today, -> { where(logged_at: Date.today.to_datetime) }, :class_name => "Attendance"
 
 	has_one :attendance_today, -> { where(logged_at: Date.today.to_datetime) }, :class_name => "Attendance"
 	
@@ -62,7 +63,8 @@ class WorkStation < ActiveRecord::Base
 	end
 
 	def attendance_for_today
-		attendance_today.blank? ? false : attendance_today.present
+		# attendances_today.blank? ? false : attendance_today.present
+		attendances_today = workstation_operators.map {|op| [op.id, Attendance.attendance_today(id, op.id).blank? ? "false" : Attendance.attendance_today(id, op.id).last.present] }
 	end
 
 	def has_deviation?

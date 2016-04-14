@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407130608) do
+ActiveRecord::Schema.define(version: 20160413183912) do
 
   create_table "attendances", force: :cascade do |t|
-    t.integer  "work_station_id", limit: 4
-    t.boolean  "present",         limit: 1, default: true
+    t.integer  "work_station_id",         limit: 4
+    t.boolean  "present",                 limit: 1, default: true
     t.datetime "logged_at"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.integer  "workstation_operator_id", limit: 4
   end
 
   add_index "attendances", ["work_station_id"], name: "index_attendances_on_work_station_id", using: :btree
