@@ -53,4 +53,11 @@ class OperationBulletin < ActiveRecord::Base
 				.select("logged_at, sum(present) as tot_attendance")
 				.group("logged_at")
 	end
+
+	def attendance_for_month(report_date)
+		work_stations.joins(:attendances)
+				.where("DATE(logged_at) >= ?", (report_date - 1.month) )
+				.select("logged_at, sum(present) as tot_attendance")
+				.group("logged_at")
+	end
 end

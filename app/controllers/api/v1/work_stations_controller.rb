@@ -2,6 +2,7 @@ class Api::V1::WorkStationsController < ApiController
 
 	def index
 	  	@work_stations = WorkStation.includes(:operation_bulletin, :section, :operation, :machine, :operators)
+	  						.includes(:attendance_today)
 	  						.where("operation_bulletin_id = ?", params[:operation_bulletin_id])
 	  						.order("section_id, id")
 	end

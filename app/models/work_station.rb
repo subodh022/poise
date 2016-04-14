@@ -14,8 +14,6 @@ class WorkStation < ActiveRecord::Base
 	end
 	has_many :workstation_operators
 	has_many :operators, :through => :workstation_operators
-	# has_many :attendances_today, -> { where(logged_at: Date.today.to_datetime) }, :class_name => "Attendance"
-
 	has_one :attendance_today, -> { where(logged_at: Date.today.to_datetime) }, :class_name => "Attendance"
 	
 
@@ -44,7 +42,11 @@ class WorkStation < ActiveRecord::Base
 	end
 
 	def operator_with_skills(operation_id)
-		operators.blank? ? "NA" : operators.map{|op| op.name_with_skill(operation_id).merge({name_class: (attendance_for_today ? "green-item" : "red-item")}) }
+		workstation_operators.blank? ? "NA" : workstation_operators.map{|op| op.operator.name_with_skill(operation_id)
+			.merge({
+				name_class: (Attendance.attendance_today(id, op.id).blank? ? "red-item" : (Attendance.attendance_today(id, op.id).last.present ? "green-item" : "red-item"))
+			})
+		}
 	end
 
 	def recent_outputs
@@ -62,8 +64,7 @@ class WorkStation < ActiveRecord::Base
 		ws_list
 	end
 
-	def attendance_for_today
-		# attendances_today.blank? ? false : attendance_today.present
+	def attendances_for_today
 		attendances_today = workstation_operators.map {|op| [op.id, Attendance.attendance_today(id, op.id).blank? ? "false" : Attendance.attendance_today(id, op.id).last.present] }
 	end
 
@@ -75,13 +76,14 @@ class WorkStation < ActiveRecord::Base
 
 	def status
 		status = {state: "green", message: []}
+		final_attendance = attendances_for_today.inject(true){|a,x| a and x[1] } && (attendance_today.blank? ? false : attendance_today.present)
 		
-		unless attendance_for_today
+		unless final_attendance
 			status[:state] = "blue"
-			status[:message] << "Operator not present"
+			status[:message] << "Operator(s) not present"
 		else
 			status[:state] = "green"
-			status[:message] << "Operator present"
+			status[:message] << "Operator(s) present"
 		end
 
 		output = most_recent_output

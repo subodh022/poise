@@ -1,5 +1,4 @@
 json.array! @work_stations do |ws|
-	attendances = ws.attendance_for_today
 	json.work_station do
 		json.id ws.id
 		json.section_id ws.section_id
@@ -8,8 +7,6 @@ json.array! @work_stations do |ws|
 		json.operation_name ws.operation_name
 		json.machine_name ws.machine_name
 		json.operator_name ws.operator_name
-		json.attendance_today attendances.inject(true){|a,x| a and x[1] }
-		json.operators_attendance attendances
 		json.(ws.status, :state, :message)
 	end
 end
