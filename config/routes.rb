@@ -64,6 +64,7 @@ Rails.application.routes.draw do
         get "ws_mac_details"
         get "ws_db_list"
         post "create_deviation"
+        post "create_mac_deviation"
       end
 
       get "working_hours" => "reports#working_hours"

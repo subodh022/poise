@@ -110,6 +110,19 @@ class WorkStation < ActiveRecord::Base
 			status[:message] << "Operator helping workstation with '#{given_deviation.to_ws.operation_name}' operation"
 		end
 
+		downtimes = machine_downtimes.where("created_at + INTERVAL downtime MINUTE > ?", Time.now.utc)
+		unless downtimes.blank?
+			status[:mac_state] = "red"
+			status[:mac_message] = "Machine Down"
+		end
+
+		mac_deviation = MachineDeviation.where("new_ws_id = ? and created_at + INTERVAL dev_time MINUTE > ?", id, Time.now.utc)
+		unless mac_deviation.blank?
+			status[:mac_state] = "yellow"
+			status[:mac_message] = "New machine allocated"
+		end
+
+
 		status[:message] = status[:message].join(", ")
 		status
 	end

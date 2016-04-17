@@ -32,4 +32,13 @@ class Api::V1::DynamicBalancingController < ApiController
 		end
 	end
 
+	def create_mac_deviation
+		@md = MachineDeviation.new(new_ws_id: params[:ws_id], dev_time: params[:hours].to_i*60, machine_id: params[:mac_id])
+		if @md.save
+			render json: @md.to_json
+		else
+			render json: @md.errors, status: :unprocessable_entity
+		end
+	end
+
 end

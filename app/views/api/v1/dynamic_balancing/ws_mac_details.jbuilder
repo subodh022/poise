@@ -1,3 +1,3 @@
 json.machines do
-  json.array! @machines, :name, :mac_id, :attachment, :available_units
+  json.array! @machines, :id, :name, :mac_id, :attachment, :available_units
 end
