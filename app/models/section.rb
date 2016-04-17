@@ -13,7 +13,7 @@ class Section < ActiveRecord::Base
 	end
 
 	def ob_work_stations(ob_id)
-		work_stations.where("operation_bulletin_id = ?", ob_id)
+		work_stations.where("operation_bulletin_id = ?", ob_id).order("id")
 	end
 
 	def get_operations

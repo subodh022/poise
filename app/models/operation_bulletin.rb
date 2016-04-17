@@ -17,6 +17,7 @@ class OperationBulletin < ActiveRecord::Base
 				.where("DATE(logged_at) = ? #{section_condition}", report_date)
 				.select("work_stations.*, sum(downtime) as tot_downtime, avg(downtime) as avg_downtime")
 				.group("work_stations.id")
+				.order("section_id, work_stations.id")
 				.includes(:operation)
 	end
 
@@ -26,6 +27,7 @@ class OperationBulletin < ActiveRecord::Base
 				.where("DATE(logged_at) = ? #{section_condition}", report_date)
 				.select("work_stations.*, sum(rework) as tot_rework, avg(rework) as avg_rework")
 				.group("work_stations.id")
+				.order("section_id, work_stations.id")
 				.includes(:operation)
 	end
 
@@ -35,6 +37,7 @@ class OperationBulletin < ActiveRecord::Base
 				.where("DATE(logged_at) = ? #{section_condition}", report_date)
 				.select("work_stations.*, sum(output) as tot_output, avg(output) as avg_output")
 				.group("work_stations.id")
+				.order("section_id, work_stations.id")
 				.includes(:operation)
 	end
 
@@ -44,6 +47,7 @@ class OperationBulletin < ActiveRecord::Base
 				.where("work_stations.id IN (SELECT max(id) FROM work_stations WHERE operation_bulletin_id = #{id} GROUP BY section_id)")
 				.select("work_stations.*, sum(output) as tot_output, avg(output) as avg_output")
 				.group("work_stations.id")
+				.order("section_id")
 				.includes(:section)
 	end
 
