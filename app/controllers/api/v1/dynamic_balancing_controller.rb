@@ -6,11 +6,21 @@ class Api::V1::DynamicBalancingController < ApiController
 	  						.order("section_id, id")
 	end
 
+	def ws_db_list
+		@ob = OperationBulletin.find(params[:ob_id])
+		@sections = @ob.line.enabled_sections
+	end
+
 	def ws_details
 		@ws = WorkStation.find_by_id(params[:work_station_id])
 		@operators = @ws.operator_with_skills(@ws.operation_id)
 		@outputs = @ws.recent_outputs.map(&:output)
 		@avl_devaitions = @ws.avl_deviations
+	end
+
+	def ws_mac_details
+		@ws = WorkStation.find_by_id(params[:work_station_id])
+		@machines = [@ws.machine]
 	end
 
 	def create_deviation

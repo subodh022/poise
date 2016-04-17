@@ -61,6 +61,8 @@ Rails.application.routes.draw do
       namespace "dynamic_balancing" do
         get "ws_list"
         get "ws_details"
+        get "ws_mac_details"
+        get "ws_db_list"
         post "create_deviation"
       end
 

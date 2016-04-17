@@ -75,7 +75,7 @@ class WorkStation < ActiveRecord::Base
 	end
 
 	def status
-		status = {state: "green", message: []}
+		status = {state: "green", mac_state: "green", message: [], mac_message: ["Machine operational"]}
 		final_attendance = attendances_for_today.inject(true){|a,x| a and x[1] } && (attendance_today.blank? ? false : attendance_today.present)
 		
 		unless final_attendance

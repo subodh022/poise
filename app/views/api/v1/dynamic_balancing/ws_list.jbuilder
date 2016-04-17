@@ -7,6 +7,6 @@ json.array! @work_stations do |ws|
 		json.operation_name ws.operation_name
 		json.machine_name ws.machine_name
 		json.operator_name ws.operator_name
-		json.(ws.status, :state, :message)
+		json.(ws.status, :state, :mac_state, :message, :mac_message)
 	end
 end
