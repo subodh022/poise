@@ -19,6 +19,27 @@
 
 @import "rangeslider.js/dist/rangeslider.css";
 
+.logo {
+  height: 50px;
+  overflow: hidden;
+}
+
+.logo span {
+  color: #707070;
+  line-height: 28px;
+}
+
+.logo a {
+  text-decoration: none;
+}
+
+.logo img {
+  float: left;
+  height: 50px;
+  margin-top: -13px;
+  width: 50px;
+}
+
 .row {
 	margin: 10px 0;
 }

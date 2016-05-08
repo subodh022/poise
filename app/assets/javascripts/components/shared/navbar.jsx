@@ -4,7 +4,11 @@ const NavbarInstance = React.createClass({
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#"><span className="glyphicon glyphicon-ruble"></span> Poise</a>
+            <div className="logo">
+              <a href="#">
+                <img src="/assets/p3.svg" alt="Poise Logo" height="150" width="250"/> Poise
+              </a>
+            </div>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
