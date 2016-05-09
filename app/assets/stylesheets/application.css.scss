@@ -19,13 +19,24 @@
 
 @import "rangeslider.js/dist/rangeslider.css";
 
+@font-face {
+  font-family: 'Capsule';
+  src: url('/assets/fonts/Capsule X Pro Medium UC.otf'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/Capsule X Pro Medium UC.otf?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/Capsule X Pro Medium UC.otf') format('otf'), /* Super Modern Browsers */
+       url('/assets/fonts/Capsule X Pro Medium UC.otf') format('otf'), /* Pretty Modern Browsers */
+       url('/assets/fonts/Capsule X Pro Medium UC.otf') format('truetype'), /* Safari, Android, iOS */
+}
+
 .logo {
   height: 50px;
   overflow: hidden;
+  margin-left: -25px !important;
 }
 
 .logo span {
   color: #707070;
+  font-size: 1.1em;
   line-height: 28px;
 }
 

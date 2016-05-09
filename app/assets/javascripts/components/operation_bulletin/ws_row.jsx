@@ -89,7 +89,6 @@ const WSRow = React.createClass({
         <td>{this.props.record.operator_name}</td>
         <td>{this.props.record.machine.name}</td>
         <td>{(this.props.record.machine.attachment == "") ? <i className="text-muted">None</i> : this.props.record.machine.attachment}</td>
-        <td>{this.props.record.machine.tot_units - this.props.record.machine.used_units}</td>
         <td>
           <a className="btn btn-default btn-xs rm10" onClick={this.handleToggle} title="Edit">
             <span className="glyphicon glyphicon-pencil"></span>
@@ -147,7 +146,6 @@ const WSRow = React.createClass({
           </div>
         </td>
         <td>{(this.props.record.machine.attachment == "") ? <i className="text-muted">None</i> : this.props.record.machine.attachment}</td>
-        <td>{this.props.record.machine.tot_units - this.props.record.machine.used_units}</td>
         <td>
           <a className="btn btn-primary btn-xs rm10" onClick={this.handleEdit} title="Save">
             <span className="glyphicon glyphicon-ok"></span>

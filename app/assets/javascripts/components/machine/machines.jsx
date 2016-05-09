@@ -19,7 +19,7 @@ Machines = React.createClass({
     records = React.addons.update(this.state.records, {
       $push: [record]
     });
-    ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Machine "+ record.name +" Added."} />, document.getElementById("alert_messages"));
+    ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Machine "+ record.name +" Added"}/>, document.getElementById("alert_messages"));
     return this.setState({
       records: records
     });
@@ -30,7 +30,7 @@ Machines = React.createClass({
     records = React.addons.update(this.state.records, {
       $splice: [[index, 1]]
     });
-    ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Machine "+ record.name +" Removed."} />, document.getElementById("alert_messages"));
+    ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Machine "+ record.name +" Removed."}/>, document.getElementById("alert_messages"));
     return this.setState({
       records: records
     });
@@ -41,7 +41,7 @@ Machines = React.createClass({
     records = React.addons.update(this.state.records, {
       $splice: [[index, 1, data]]
     });
-    ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Machine "+ record.name +" Updated."} />, document.getElementById("alert_messages"));
+    ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Machine "+ record.name +" Updated."}/>, document.getElementById("alert_messages"));
     return this.setState({
       records: records
     });
@@ -61,6 +61,7 @@ Machines = React.createClass({
               <th>Line</th>
               <th>Total Units</th>
               <th>Available Units</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>

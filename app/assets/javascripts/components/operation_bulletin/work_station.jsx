@@ -7,7 +7,7 @@ const WorkStation = React.createClass({
       return { value: a.id, label: a.emp_name, skills: a.skills };
     });
     machines = jQuery.map( this.props.machines, function( a ) {
-      return { value: a.id, label: a.name };
+      return { value: a.id, label: (a.name + " (Available: " + (a.tot_units - a.used_units) + ")") };
     });
     return {
       records: this.props.records,
@@ -21,9 +21,16 @@ const WorkStation = React.createClass({
     records = React.addons.update(this.state.records, {
       $push: [record]
     });
+    machines = jQuery.map( this.props.machines, function( a ) {
+      if(a.id == record.machine_id) {
+        a.used_units += 1;
+      }
+      return { value: a.id, label: (a.name + " (Available: " + (a.tot_units - a.used_units) + ")") };
+    });
     ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Work Station Added."} />, document.getElementById("alert_messages"));
     return this.setState({
-      records: records
+      records: records,
+      machines: machines
     });
   },
   deleteRecord: function(record) {
@@ -32,9 +39,16 @@ const WorkStation = React.createClass({
     records = React.addons.update(this.state.records, {
       $splice: [[index, 1]]
     });
+    machines = jQuery.map( this.props.machines, function( a ) {
+      if(a.id == record.machine_id) {
+        a.used_units -= 1;
+      }
+      return { value: a.id, label: (a.name + " (Available: " + (a.tot_units - a.used_units) + ")") };
+    });
     ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Work Station Removed."} />, document.getElementById("alert_messages"));
     return this.setState({
-      records: records
+      records: records,
+      machines: machines
     });
   },
   updateRecord: function(record, data) {
@@ -43,9 +57,19 @@ const WorkStation = React.createClass({
     records = React.addons.update(this.state.records, {
       $splice: [[index, 1, data]]
     });
+    machines = jQuery.map( this.props.machines, function( a ) {
+      if(a.id == record.machine_id) {
+        a.used_units += 1;
+      }
+      if(a.id == data.machine_id) {
+        a.used_units -= 1;
+      }
+      return { value: a.id, label: (a.name + " (Available: " + (a.tot_units - a.used_units) + ")") };
+    });
     ReactDOM.render(<AlertAutoDismissable type="success" header="Success!" message={"Work Station Updated."} />, document.getElementById("alert_messages"));
     return this.setState({
-      records: records
+      records: records,
+      machines: machines
     });
   },
   render: function() {
@@ -60,7 +84,6 @@ const WorkStation = React.createClass({
               <th>Operator</th>
               <th>Machine</th>
               <th>Attachment</th>
-              <th>Avaialble Units</th>
               <th>Actions</th>
             </tr>
           </thead>
